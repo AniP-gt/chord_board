@@ -1,0 +1,509 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@charset "UTF-8";
+
+// リセット
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-style: normal;
+  text-align: left;
+  zoom: 1;
+  text-decoration: none;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+table {
+  border-collapse: collapse;
+  font-family: inherit;
+}
+
+h1, h2, h3, h4, h5 {
+  font-size: 100%;
+  font-weight: normal;
+  line-height: 1;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: 16px;
+}
+
+input[type="button"], input[type="text"], input[type="submit"] {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+textarea {
+  resize: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+th, td {
+  border-collapse: collapse;
+}
+
+table th, table td {
+  white-space: nowrap;
+}
+
+ul, ol, li {
+  list-style-type: none;
+}
+
+img {
+  vertical-align: text-bottom;
+  vertical-align: -webkit-baseline-middle;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
+
+
+// 共通パーツ
+
+// フラッシュメッセージ
+
+.notice{
+  margin-top: 70px;
+  background-color: black;
+  color: white;
+}
+
+// ヘッダー
+header{
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  .header-wrap{
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    height: 60px;
+    padding-top: 10px;
+    .logo{
+      font-size: 40px;
+      font-weight: bold;
+      color: white;
+      margin-left: 30px;
+      font-family: 'Festive', cursive;
+    }
+    nav{
+      .menu{
+        display: flex;
+        justify-content: right;
+        line-height: 50px;
+        .menu-list{
+          margin-right: 50px;
+          color: white;
+          &:hover{
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+  }
+  }
+  .btn {
+    /* ボタンの配置位置  */
+    position: fixed;
+    top: 10px;
+    right: 16px;
+    /* ボタンの大きさ  */
+    width: 40px;
+    height: 40px;
+    /* 最前面に */
+    z-index: 10;
+    background-color: black; /* わかりやすいように */
+    display: none;
+    .btn-line {
+      display: block;
+      position: relative;  /* バーガー線の位置基準として設定 */
+      width: 100%;  /* 線の長さと高さ */
+      height: 4px;
+      background-color: white;  /* バーガー線の色 */
+      transition: .2s;
+      &::before,&::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        transition: .5s;
+      }
+      &::before {
+        /* 上の線の位置 */
+        transform: translateY(-10px);
+      }
+      &::after {
+        /* 下の線の位置 */
+        transform: translateY(10px);
+      }
+    }
+  }
+
+
+
+// フッター
+footer{
+  margin-top: auto;
+  .footer-wrap{
+    background-color: black;
+    height: 60px;
+    p{
+      line-height: 60px;
+      color: white;
+      text-align: center;
+    }
+  }
+}
+
+
+// home/new/login共通
+.body-wrap{
+  background-image: image-url('background_img.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+
+// ログイン
+.new-wrap{
+  margin: 0 auto;
+  margin-top: 80px;
+  h2{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .form{
+    .field{
+      margin-top: 15px;
+      color: white;
+      .label{
+        font-size: 18px;
+      }
+      .input{
+        width: 350px;
+      }
+      .remember-p{
+        color: white;
+      }
+    }
+    .actions{
+      margin: 20px 0;
+      .submit{
+        background-color: rgb(17, 209, 0);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        width: 150px;
+        height: 50px;
+        box-shadow: 0 2px rgb(204, 204, 204);
+        cursor: pointer;
+        &:active{
+          -webkit-transform: translateY(4px);
+          transform: translateY(2px);/*下に動く*/
+          box-shadow: none;/*線を消す*/
+        }
+      }
+    }
+    #error_explanation{
+        ul{
+          li{
+            color: white;
+          }
+        }
+    }
+  }
+  a{
+    color: white;
+    font-size: 15px;
+    &:hover{
+      opacity: 0.7;
+    }
+  }
+}
+
+
+// home画面
+@mixin home {
+  text-align: center;
+  font-size: 30px;
+  color: rgb(36, 36, 36);
+  display: block;
+  line-height: 70px;
+  font-weight: 400;
+  &:hover{
+    color: white;
+  }
+}
+
+.home{
+  .home-wrap{
+    .home-container{
+      margin: 0 auto;
+      background-color: beige;
+      border-radius: 20px;
+      width: 250px;
+      height: 70px;
+      margin-top: 59px;
+      .home-a{
+        @include home;
+      }
+      &:hover{
+        background-color: rgb(121, 255, 177);
+      }
+    }
+  }
+}
+
+
+
+
+
+// login画面
+.login{
+  .login-wrap{
+    p{
+      color: white;
+    }
+  }
+}
+
+
+
+// new画面
+.new{
+  .new-wrap{
+    p{
+      color: white;
+    }
+  }
+}
+
+// index画面
+@mixin p-wrap {
+  margin: 20px 20px 15px;
+  background-color: blue;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+@mixin p-container {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+}
+
+@mixin chord-degree {
+  width:9%;
+  cursor: pointer;
+  margin:0.5%;
+}
+
+@mixin chord-degree-img {
+  border-radius: 30%;
+}
+
+$p-wrap: aquamarine;
+
+
+ // コード一覧
+.chord{
+  margin: 100px 0 50px;
+  .list{
+    display: flex;
+    .p-chord-wrap{
+      @include p-wrap;
+      cursor: pointer;
+      &:hover{
+        background-color: $p-wrap;
+      }
+      .p-container{
+        @include p-container;
+      }
+    }
+    .p-degree-wrap{
+      @include p-wrap;
+      cursor: pointer;
+      &:hover{
+        background-color: $p-wrap;
+      }
+      .p-container{
+        @include p-container;
+      }
+    }
+  }
+  .chord-word{
+    margin: 20px 15px 20px;
+  }
+  #chords{
+    display: flex;
+    flex-wrap: wrap;
+    &:focus{
+      outline: none;
+    }
+    .chord{
+      @include chord-degree;
+      .chord_img{
+        @include chord-degree-img;
+      }
+      &:hover {
+        opacity: 0.6;
+      }
+      &:active{
+        opacity: 0.3;
+      }
+    }
+  }
+  #degrees{
+    display: flex;
+    flex-wrap: wrap;
+    display: none;
+    &:focus{
+      outline: none;
+    }
+    .degree{
+      @include chord-degree;
+      .degree_img{
+        @include chord-degree-img;
+      }
+      &:hover {
+        opacity: 0.6;
+      }
+      &:active{
+        opacity: 0.3;
+      }
+    }
+  }
+}
+
+
+
+.work{
+  margin:80px 0 50px;
+  .p-wrap{
+    @include p-wrap;
+    .p-container{
+      @include p-container;
+    }
+  }
+  #sakuhin{
+    display: flex;
+    flex-wrap: wrap;
+    .chord{
+      width:9%;
+      border-radius: 20%;
+      margin:0.5%;
+      margin-bottom: 20px;
+      .chord_img{
+        border-radius: 30%;
+      }
+      .sakuhin{
+        color: white;
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+      }
+      .remove{
+        text-align: center;
+        line-height: 30px;
+        font-size:20px;
+        cursor: pointer;
+        margin:0;
+        padding: 0;
+        &:hover {
+          color:red;
+        }
+        &:active{
+          color: orange;
+        }
+      }
+    }
+  }
+}
+
+.play{
+  cursor: pointer;
+  background-color:cyan;
+  width: 200px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-bottom: 70px;
+  &:hover{
+    background-color:khaki;
+  }
+  .play-btn{
+    line-height: 60px;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+  &:hover{
+    color: black;
+  }
+  }
+}
+
+// フォーム送信
+.form{
+  margin: 0 auto;
+  .form_title{
+    display: flex;
+  }
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,180 @@
+	/* 959px以下に適用されるCSS（タブレット用） */
+@media screen and (max-width: 959px) {
+
+  // 共通
+  header{
+    .header-wrap{
+      height: 60px;
+      .logo{
+      }
+      nav{
+        .menu{
+          .menu-list{
+            margin-right: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  // home画面
+  .home{
+    .home-wrap{
+      .home-container{
+        height: 50%;
+      }
+    }
+  }
+}
+
+
+	/* 680px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 680px) {
+  // 共通
+  header{
+    .header-wrap{
+      height: 50px;
+      .logo{
+        font-size: 40px;
+      }
+      nav{
+        .menu{
+          display: flex;
+          flex-direction: column;
+          z-index: 10;
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 100%;
+          height: 100vh;
+          background-color: rgba(92, 92, 92, 0.89);
+          transition: .3s;
+          .menu-list{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: cornflowerblue;
+            width: 200px;
+            height: 50px;
+            border-radius: 10%;
+            color: white;
+            margin:0 auto;
+            margin-top: 70px;
+            &:hover{
+              background-color: rgba(255, 255, 255, .5);
+              color: #333;
+              cursor: pointer;
+              transition: .3s;
+            }
+          }
+        }
+        .menu.open{
+          position: absolute;
+          right:0;
+        }
+      }
+    }
+    .btn{
+      display: block;
+      z-index: 1000;
+      .btn-line.open {
+        background-color: transparent;
+        &::before,&::after{
+          content: "";
+          background-color: white;
+          transition: .2s;
+        }
+        &::before{
+          transform: rotate(45deg);
+        }
+        &::after{
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+
+
+
+  // home画面
+  .home{
+    .home-wrap{
+      .home-container{
+        // width: 100%;
+        height: 50%;
+      }
+    }
+  }
+
+
+
+
+  // index画面
+  @mixin p-wrap-res {
+    margin: 20px 20px 15px;
+    background-color: blue;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  @mixin p-container-res {
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+  }
+
+  @mixin chord-degree-res {
+    width : 18%;
+    margin: 10px 30px;
+    cursor: pointer;
+    margin: 0.5%;
+  }
+
+  // コード一覧
+  .chord{
+    .list{
+      .p-chord-wrap{
+        @include p-wrap-res();
+        .p-container{
+          @include p-container-res();
+        }
+      }
+      .p-degree-wrap{
+        @include p-wrap-res();
+        .p-container{
+          @include p-container-res();
+        }
+      }
+    }
+    #chords{
+      justify-content: center;
+      .chord{
+        @include chord-degree-res();
+      }
+    }
+    #degrees{
+      .degree{
+        @include chord-degree-res();
+      }
+    }
+  }
+  .work{
+    .p-wrap{
+      @include p-wrap-res();
+      .p-container{
+        @include p-container-res();
+      }
+    }
+    #sakuhin{
+      display: flex;
+      flex-wrap: wrap;
+      .chord{
+        width:18%;
+      }
+    }
+  }
+}

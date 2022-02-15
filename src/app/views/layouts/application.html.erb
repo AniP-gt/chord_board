@@ -1,16 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>ChordBoard</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'responsive',  media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <% if flash[:notice] %>
+    <p class="notice"><%= notice %></p>
+    <% end %>
+
+    <% if flash[:alert] %>
+    <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <!-- ヘッダー -->
+    <header>
+      <div class="header-wrap">
+        <%= link_to root_path, class:"logo" do %>
+          <h1>ChordBoard</h1>
+        <% end %>
+
+        <!-- ハンバーガーメニュー -->
+        <% if user_signed_in? %>
+          <nav>
+            <ul id="menu" class="menu">
+              <li><%= link_to "投稿一覧", new_user_registration_path,class:"menu-list" %></li>
+              <li><%= link_to "操作説明", new_user_registration_path,class:"menu-list" %></li>
+              <li><%= link_to "マイページ", new_user_registration_path,class:"menu-list" %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path,method: :delete, class:"menu-list" %></li>
+            </ul>
+          </nav>
+        <%else%>
+          <nav>
+            <ul id="menu" class="menu">
+              <li><%= link_to "投稿一覧", new_user_registration_path,class:"menu-list" %></li>
+              <li><%= link_to "操作説明", new_user_registration_path,class:"menu-list" %></li>
+              <li><%= link_to "アカウント登録", new_user_registration_path,class:"menu-list" %></li>
+              <li><%= link_to "ログイン", new_user_session_path,class:"menu-list" %></li>
+            </ul>
+          </nav>
+        <%end%>
+        <!-- メニューボタン -->
+        <button type="button" id="js_btn" class="btn">
+          <span id="btn_line" class="btn-line"></span>
+        </button>
+      </div>
+    </header>
+<%#
+    <!-- フッター -->
+    <footer>
+      <div class="footer-wrap">
+        <p>Copyright</p>
+      </div>
+    </footer> %>
+    <%= javascript_pack_tag 'sub.js'%>
     <%= yield %>
   </body>
 </html>
