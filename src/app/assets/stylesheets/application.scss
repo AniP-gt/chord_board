@@ -97,7 +97,6 @@ img {
 // 共通パーツ
 
 // フラッシュメッセージ
-
 .notice{
   margin-top: 70px;
   background-color: black;
@@ -140,23 +139,20 @@ header{
   }
   }
   .btn {
-    /* ボタンの配置位置  */
     position: fixed;
     top: 10px;
     right: 16px;
-    /* ボタンの大きさ  */
     width: 40px;
     height: 40px;
-    /* 最前面に */
     z-index: 10;
-    background-color: black; /* わかりやすいように */
+    background-color: black;
     display: none;
     .btn-line {
       display: block;
-      position: relative;  /* バーガー線の位置基準として設定 */
-      width: 100%;  /* 線の長さと高さ */
+      position: relative;
+      width: 100%;
       height: 4px;
-      background-color: white;  /* バーガー線の色 */
+      background-color: white;
       transition: .2s;
       &::before,&::after {
         content: "";
@@ -167,11 +163,9 @@ header{
         transition: .5s;
       }
       &::before {
-        /* 上の線の位置 */
         transform: translateY(-10px);
       }
       &::after {
-        /* 下の線の位置 */
         transform: translateY(10px);
       }
     }
@@ -500,8 +494,29 @@ $p-wrap: aquamarine;
 }
 
 
-
-
+// 投稿者一覧
+.wrap{
+  margin-top: 80px;
+  display: flex;
+}
+.users-wrapper{
+  margin-right: 30px;
+  margin-left: 30px;
+}
+.users-container{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #5d627b;
+  background: white;
+  border-top: solid 5px #5d627b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.no-image{
+  width: 250px;
+}
+.users-name{
+  font-size: 20px;
+}
 
 
 

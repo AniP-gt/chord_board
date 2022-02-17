@@ -28,8 +28,19 @@
 }
 
 
+
+
+
+
+
+
 	/* 680px以下に適用されるCSS（スマホ用） */
 @media screen and (max-width: 680px) {
+
+  .notice{
+    margin-top: 60px;
+  }
+
   // 共通
   header{
     .header-wrap{
@@ -59,7 +70,7 @@
             border-radius: 10%;
             color: white;
             margin:0 auto;
-            margin-top: 70px;
+            margin-top: 50px;
             &:hover{
               background-color: rgba(255, 255, 255, .5);
               color: #333;
@@ -94,8 +105,6 @@
     }
   }
 
-
-
   // home画面
   .home{
     .home-wrap{
@@ -105,9 +114,6 @@
       }
     }
   }
-
-
-
 
   // index画面
   @mixin p-wrap-res {
