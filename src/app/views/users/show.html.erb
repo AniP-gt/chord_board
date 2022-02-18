@@ -1,2 +1,40 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="show-wrap">
+
+  <% if @user.id == current_user.id %>
+    <div class="show-h1">
+      <h1>マイページ</h1>
+    </div>
+  <%else%>
+    <div class="show-h1">
+      <h1>作曲者ページ</h1>
+    </div>
+  <%end%>
+
+  <div class="show-container">
+    <div class="no-image">
+      <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png" %>
+    </div>
+
+    <div class="show-wrapper">
+    <% if @user.id == current_user.id %>
+      <div class="edit">
+        <%=link_to"編集", edit_user_path(@user), class:"edit-btn" %>
+      </div>
+    <%end%>
+      <div class="show-edit">
+        ユーザー名：<%= @user.username%>
+      </div>
+
+      <% if @user.id == current_user.id %>
+      <div class="show-edit">
+        メールアドレス：<%= @user.email%>
+      </div>
+      <%end%>
+
+      <div class="show-profile">
+        プロフィール：<%= @user.profile%>
+      </div>
+    </div>
+  </div>
+
+</div>

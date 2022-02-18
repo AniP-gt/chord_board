@@ -99,6 +99,7 @@ img {
 // フラッシュメッセージ
 .notice{
   margin-top: 70px;
+  margin-bottom: -85px;
   background-color: black;
   color: white;
 }
@@ -201,6 +202,7 @@ footer{
 
 
 
+
 // ログイン
 .new-wrap{
   margin: 0 auto;
@@ -262,18 +264,6 @@ footer{
 
 
 // home画面
-@mixin home {
-  text-align: center;
-  font-size: 30px;
-  color: rgb(36, 36, 36);
-  display: block;
-  line-height: 70px;
-  font-weight: 400;
-  &:hover{
-    color: white;
-  }
-}
-
 .home{
   .home-wrap{
     .home-container{
@@ -284,15 +274,21 @@ footer{
       height: 70px;
       margin-top: 59px;
       .home-a{
-        @include home;
-      }
-      &:hover{
-        background-color: rgb(121, 255, 177);
+        text-align: center;
+        font-size: 30px;
+        color: rgb(36, 36, 36);
+        display: block;
+        line-height: 70px;
+        font-weight: 400;
+        &:hover{
+          color: white;
+          background-color: rgb(121, 255, 177);
+          border-radius: 20px;
+        }
       }
     }
   }
 }
-
 
 
 
@@ -316,6 +312,7 @@ footer{
     }
   }
 }
+
 
 // index画面
 @mixin p-wrap {
@@ -345,7 +342,6 @@ footer{
 }
 
 $p-wrap: aquamarine;
-
 
  // コード一覧
 .chord{
@@ -495,17 +491,18 @@ $p-wrap: aquamarine;
 
 
 // 投稿者一覧
-.wrap{
+.index-wrap{
   margin-top: 80px;
-  display: flex;
 }
-.users-wrapper{
+.index-wrapper{
+  display: flex;
   margin-right: 30px;
   margin-left: 30px;
 }
-.users-container{
+.index-container{
   padding: 0.5em 1em;
   margin: 2em 0;
+  margin-right: 20px;
   color: #5d627b;
   background: white;
   border-top: solid 5px #5d627b;
@@ -513,12 +510,156 @@ $p-wrap: aquamarine;
 }
 .no-image{
   width: 250px;
+  height: 250px;
 }
-.users-name{
+.index-name{
   font-size: 20px;
 }
 
 
+// マイページ
+.show-wrap{
+  margin: 80px 30px 0;
+  .show-h1{
+    font-size: 25px;
+    width: 200px;
+    margin:2em 0;
+    position: relative;
+    padding: 0.5em 1.5em;
+    border-top: solid 2px black;
+    border-bottom: solid 2px black;
+    &::before, &::after{
+      content: '';
+      position: absolute;
+      top: -10px;
+      width: 2px;
+      height: -webkit-calc(100% + 20px);
+      height: calc(100% + 20px);
+      background-color: black;
+    }
+    &::before{
+      left: 10px;
+    }
+    &::after{
+      right: 10px;
+    }
+    h1{
+      text-align: center;
+    }
+  }
+  .show-container{
+    display: flex;
+    .no-image{
+      width:250px;
+      height: 150px;
+    }
+    .show-wrapper{
+      margin-left: 30px;
+    .show-edit{
+      margin-bottom: 10px;
+      padding: 0.5em 1em;
+      color: #474747;
+      background: whitesmoke;/*背景色*/
+      border-left: double 7px #4ec4d3;/*左線*/
+      border-right: double 7px #4ec4d3;/*右線*/
+    }
+    .show-profile{
+      padding: 0.5em 1em;
+      margin-top: 20px;
+      border: double 5px #4ec4d3;
+      width: 500px;
+      height: 100px;
+    }
+    .edit-btn{
+      display: block;
+      text-align: center;
+      font-size: 24px;
+      background-color: rgb(17, 209, 0);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      width: 150px;
+      height: 40px;
+      line-height: 40px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px rgb(204, 204, 204);
+      cursor: pointer;
+      &:active{
+        -webkit-transform: translateY(4px);
+        transform: translateY(2px);
+        box-shadow: none;
+      }
+    }
+    }
+  }
+}
 
-
-
+// 編集画面
+.edit-wrap{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  .edit-container{
+    margin:0 auto;
+    margin-top: 80px;
+    .edit-h1{
+      font-size: 25px;
+      width: 200px;
+      position: relative;
+      padding: 0.5em 1.5em;
+      border-top: solid 2px black;
+      border-bottom: solid 2px black;
+      &::before, &::after{
+        content: '';
+        position: absolute;
+        top: -10px;
+        width: 2px;
+        height: -webkit-calc(100% + 20px);
+        height: calc(100% + 20px);
+        background-color: black;
+      }
+      &::before{
+        left: 10px;
+      }
+      &::after{
+        right: 10px;
+      }
+      h1{
+        text-align: center;
+      }
+    }
+    .form{
+      .field{
+        margin-top: 15px;
+          .label{
+            font-size: 18px;
+          }
+          .input{
+            width: 500px;
+          }
+          .text-area{
+            width:500px;
+            height: 100px;
+          }
+      }
+      .actions{
+        margin: 10px 0;
+        .submit{
+          background-color: rgb(17, 209, 0);
+          color: white;
+          border: none;
+          border-radius: 30px;
+          width: 150px;
+          height: 35px;
+          box-shadow: 0 2px rgb(204, 204, 204);
+          cursor: pointer;
+          &:active{
+            -webkit-transform: translateY(4px);
+            transform: translateY(2px);
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+}
