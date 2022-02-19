@@ -555,44 +555,59 @@ $p-wrap: aquamarine;
     }
     .show-wrapper{
       margin-left: 30px;
-    .show-edit{
-      margin-bottom: 10px;
-      padding: 0.5em 1em;
-      color: #474747;
-      background: whitesmoke;/*背景色*/
-      border-left: double 7px #4ec4d3;/*左線*/
-      border-right: double 7px #4ec4d3;/*右線*/
-    }
-    .show-profile{
-      padding: 0.5em 1em;
-      margin-top: 20px;
-      border: double 5px #4ec4d3;
-      width: 500px;
-      height: 100px;
-    }
-    .edit-btn{
-      display: block;
-      text-align: center;
-      font-size: 24px;
-      background-color: rgb(17, 209, 0);
-      color: white;
-      border: none;
-      border-radius: 30px;
-      width: 150px;
-      height: 40px;
-      line-height: 40px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px rgb(204, 204, 204);
-      cursor: pointer;
-      &:active{
-        -webkit-transform: translateY(4px);
-        transform: translateY(2px);
-        box-shadow: none;
+      .edit-btn{
+        display: block;
+        text-align: center;
+        font-size: 24px;
+        background-color: rgb(17, 209, 0);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        width: 50%;
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px rgb(204, 204, 204);
+        cursor: pointer;
+        &:active{
+          -webkit-transform: translateY(4px);
+          transform: translateY(2px);
+          box-shadow: none;
+        }
       }
-    }
+      .show-edit{
+        margin-bottom: 10px;
+        padding: 0.5em 1em;
+        color: #474747;
+        background: whitesmoke;/*背景色*/
+        border-left: double 7px #4ec4d3;/*左線*/
+        border-right: double 7px #4ec4d3;/*右線*/
+      }
+      .show-profile{
+        width: 80%;
+        height: 100px;
+        position: relative;
+        margin: 2em 0;
+        padding: 0.5em 1em;
+        border: solid 3px #95ccff;
+        border-radius: 8px;
+        .box-title{
+          position: absolute;
+          display: inline-block;
+          top: -13px;
+          left: 10px;
+          padding: 0 9px;
+          line-height: 1;
+          font-size: 19px;
+          background: #FFF;
+          color: #95ccff;
+          font-weight: bold;
+        }
+      }
     }
   }
 }
+
 
 // 編集画面
 .edit-wrap{

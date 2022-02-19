@@ -16,23 +16,24 @@
     </div>
 
     <div class="show-wrapper">
-    <% if @user.id == current_user.id %>
-      <div class="edit">
-        <%=link_to"編集", edit_user_path(@user), class:"edit-btn" %>
-      </div>
-    <%end%>
+      <% if @user.id == current_user.id %>
+        <div class="edit">
+          <%=link_to"編集", edit_user_path(@user), class:"edit-btn" %>
+        </div>
+      <%end%>
       <div class="show-edit">
         ユーザー名：<%= @user.username%>
       </div>
 
       <% if @user.id == current_user.id %>
-      <div class="show-edit">
-        メールアドレス：<%= @user.email%>
-      </div>
+        <div class="show-edit">
+          メールアドレス：<%= @user.email%>
+        </div>
       <%end%>
 
       <div class="show-profile">
-        プロフィール：<%= @user.profile%>
+        <span class="box-title">プロフィール</span>
+        <%= @user.profile%>
       </div>
     </div>
   </div>
