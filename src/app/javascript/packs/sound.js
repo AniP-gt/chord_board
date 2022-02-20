@@ -244,7 +244,7 @@ function Fs(){
   document.getElementById("sound-file_Fs").play();
 };
 
-function FMaj7(){
+function FsMaj7(){
   document.getElementById("sound-file_FsMaj7").play();
 };
 
@@ -440,46 +440,6 @@ function As6(){
   document.getElementById("sound-file_As6").play();
 };
 
-function As(){
-  document.getElementById("sound-file_As").play();
-};
-
-function AsMaj7(){
-  document.getElementById("sound-file_AsMaj7").play();
-};
-
-function As7(){
-  document.getElementById("sound-file_As7").play();
-};
-
-function Asm(){
-  document.getElementById("sound-file_Asm").play();
-};
-
-function Asm7(){
-  document.getElementById("sound-file_Asm7").play();
-};
-
-function Asm7b5(){
-  document.getElementById("sound-file_Asm7b5").play();
-};
-
-function Asdim7(){
-  document.getElementById("sound-file_Asdim7").play();
-};
-
-function Assus4(){
-  document.getElementById("sound-file_Assus4").play();
-};
-
-function Asaug(){
-  document.getElementById("sound-file_Asaug").play();
-};
-
-function As6(){
-  document.getElementById("sound-file_As6").play();
-};
-
 function B(){
   document.getElementById("sound-file_B").play();
 };
@@ -519,3 +479,4 @@ function Baug(){
 function B6(){
   document.getElementById("sound-file_B6").play();
 };
+

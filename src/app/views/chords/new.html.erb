@@ -1,0 +1,60 @@
+<!-- メインコンテンツ -->
+  <div class="wrap">
+
+    <!-- コード一覧 -->
+    <div class="chord">
+      <div class="list">
+        <div class="p-chord-wrap">
+          <p id="chord_list" class="p-container">コード一覧</p>
+        </div>
+        <div class="p-degree-wrap">
+          <p id="degree_list" class="p-container">ディグリーネーム</p>
+        </div>
+      </div>
+      <p class="chord-word">ボタンをクリックすると、作品一覧に表示されます。
+        好きなコード進行を入力して投稿してみましょう！</p>
+      <div id="chords"></div>
+      <div id="degrees"></div>
+    </div>
+
+    <!-- 作品一覧 -->
+    <div class="work">
+      <div class="p-wrap">
+        <p class="p-container">作品一覧</p>
+      </div>
+      <div id="sakuhin"></div>
+    </div>
+
+    <!-- 音源読み込み/再生 -->
+    <div id="chord_play" class="play" onclick="play()">
+      <p id="chord_play_p" class="play-btn">再生</p>
+    </div>
+
+
+
+    <%= form_for @chord do |f|%>
+      <div class="form">
+        <div class="field">
+          <%= f.label :title,"【タイトル】" ,class:"label"%><br>
+          <%= f.text_field :title, class:"input"%>
+        </div>
+
+        <div class="field">
+          <%= f.label :body,"【コメント】", class:"label"%><br>
+          <%= f.text_area :body, class:"text-area"%>
+        </div>
+
+        <div id="form"></div>
+
+        <div class="actions">
+          <%= f.submit "投稿" , class:"submit"%>
+        </div>
+      </div>
+    <%end%>
+  </div>
+
+  <!-- 音源再生用の要素 -->
+  <div id="ongen"></div>
+  <div id="audio_start"></div>
+  <%= javascript_pack_tag 'main.js'%>
+  <%= javascript_pack_tag 'sound.js'%>
