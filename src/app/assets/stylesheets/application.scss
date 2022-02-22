@@ -318,13 +318,13 @@ footer{
 @mixin p-wrap {
   margin: 20px 20px 15px;
   background-color: blue;
-  width: 200px;
+  width: 30%;
   height: 40px;
   border-radius: 10px;
 }
 
 @mixin p-container {
-  font-size: 20px;
+  font-size: 1.2em;
   font-weight: bold;
   color: white;
   text-align: center;
@@ -379,7 +379,7 @@ $p-wrap: aquamarine;
       &:focus{
         outline: none;
       }
-      .chord{
+      .chords{
         @include chord-degree;
         .chord_img{
           @include chord-degree-img;
@@ -413,6 +413,70 @@ $p-wrap: aquamarine;
       }
     }
   }
+  .work{
+    margin:80px 0 50px;
+    .p-wrap{
+      @include p-wrap;
+      .p-container{
+        @include p-container;
+      }
+    }
+    #sakuhin{
+      display: flex;
+      flex-wrap: wrap;
+      .chords{
+        width:9%;
+        border-radius: 20%;
+        margin:0.5%;
+        margin-bottom: 20px;
+        .chord_img{
+          border-radius: 30%;
+        }
+        .sakuhin{
+          color: white;
+          text-align: center;
+          font-weight: bold;
+          font-size: 30px;
+        }
+        .remove{
+          text-align: center;
+          line-height: 30px;
+          font-size:20px;
+          cursor: pointer;
+          margin:0;
+          padding: 0;
+          &:hover {
+            color:red;
+          }
+          &:active{
+            color: orange;
+          }
+        }
+      }
+    }
+  }
+  .play{
+    cursor: pointer;
+    background-color:cyan;
+    width: 200px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 70px;
+    &:hover{
+      background-color:khaki;
+    }
+    .play-btn{
+      line-height: 60px;
+      text-align: center;
+      color: white;
+      font-size: 25px;
+      font-weight: bold;
+      &:hover{
+        color: black;
+      }
+    }
+  }
   .form{
     display: flex;
     flex-direction: column;
@@ -421,13 +485,13 @@ $p-wrap: aquamarine;
       margin: 0 auto;
       margin-top: 15px;
       .label{
-        font-size: 18px;
+        font-size: 0.8em;
       }
       .input{
         width: 500px;
       }
       .text-area{
-        width:500px;
+        width: 500px;
         height: 100px;
       }
     }
@@ -456,47 +520,81 @@ $p-wrap: aquamarine;
 }
 
 
-.work{
-  margin:80px 0 50px;
-  .p-wrap{
-    @include p-wrap;
-    .p-container{
-      @include p-container;
-    }
+
+
+// 投稿一覧画面
+
+.wrap{
+  margin-top: 80px;
+}
+
+.chord-wrap{
+  padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+}
+
+.chord-container{
+  display: flex;
+}
+
+.chord-img{
+  width: 20%;
+  height: 50%;
+  img{
+    border-radius: 50%;
   }
-  #sakuhin{
-    display: flex;
-    flex-wrap: wrap;
-    .chord{
-      width:9%;
-      border-radius: 20%;
-      margin:0.5%;
-      margin-bottom: 20px;
-      .chord_img{
-        border-radius: 30%;
-      }
-      .sakuhin{
-        color: white;
-        text-align: center;
-        font-weight: bold;
-        font-size: 30px;
-      }
-      .remove{
-        text-align: center;
-        line-height: 30px;
-        font-size:20px;
-        cursor: pointer;
-        margin:0;
-        padding: 0;
-        &:hover {
-          color:red;
-        }
-        &:active{
-          color: orange;
-        }
-      }
-    }
-  }
+}
+
+.chord-body-wrap{
+  margin-left: 30px;
+}
+
+.chord-title{
+  margin-bottom: 10px;
+}
+
+@mixin chord {
+  margin-bottom: 10px;
+  padding-top: 10px;
+  border-top: dashed 2px #000000;
+}
+.chord-username{
+  @include chord();
+}
+
+.chord-updated{
+  @include chord();
+}
+
+
+.chord-body{
+  border-top: dashed 2px #000000;
+  border-bottom: dashed 2px #000000;
+  margin: 10px 0 30px;
+  padding: 10px 0;
+}
+
+.chord_id{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.chords{
+  width:9%;
+  margin:0.5%;
+}
+
+.chord_img{
+  @include chord-degree-img;
+}
+
+.play_id{
+  margin-top: 40px;
+  margin-bottom: 100px;
 }
 
 .play{
@@ -506,21 +604,23 @@ $p-wrap: aquamarine;
   height: 60px;
   border-radius: 50%;
   margin: 0 auto;
-  margin-bottom: 70px;
+
   &:hover{
     background-color:khaki;
   }
-  .play-btn{
-    line-height: 60px;
-    text-align: center;
-    color: white;
-    font-size: 25px;
-    font-weight: bold;
+}
+.play-btn{
+  line-height: 60px;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
   &:hover{
     color: black;
   }
-  }
 }
+
+
 
 // フォーム送信
 .form{
@@ -562,6 +662,7 @@ $p-wrap: aquamarine;
 .show-wrap{
   margin: 90px 30px 0;
   .show-h1{
+    z-index:1;
     font-size: 25px;
     width: 200px;
     margin:2em 0;
@@ -659,6 +760,7 @@ $p-wrap: aquamarine;
     margin:0 auto;
     margin-top: 80px;
     .edit-h1{
+      z-index:1;
       font-size: 25px;
       width: 200px;
       position: relative;

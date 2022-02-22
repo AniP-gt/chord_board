@@ -56,5 +56,6 @@
   <!-- 音源再生用の要素 -->
   <div id="ongen"></div>
   <div id="audio_start"></div>
-  <%= javascript_pack_tag 'main.js'%>
-  <%= javascript_pack_tag 'sound.js'%>
+
+  <%= javascript_pack_tag 'main.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'sound.js', 'data-turbolinks-track': 'reload' %>

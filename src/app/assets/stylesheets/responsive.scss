@@ -113,18 +113,18 @@
     }
   }
 
-  // index画面
+  // chord_new画面
   @mixin p-wrap-res {
     margin: 20px 20px 15px;
     background-color: blue;
-    width: 200px;
+    // width: 20%;
     height: 30px;
     border-radius: 10px;
     cursor: pointer;
   }
 
   @mixin p-container-res {
-    font-size: 15px;
+    font-size: 0.6em;
     font-weight: bold;
     color: white;
     text-align: center;
@@ -139,6 +139,7 @@
   }
 
   // コード一覧
+.wrap{
   .chord{
     .list{
       .p-chord-wrap{
@@ -181,8 +182,24 @@
       }
     }
   }
+  .form{
+    .field{
+      margin: 0 auto;
+      margin-top: 15px;
+      .label{
+        font-size: 18px;
+      }
+      .input{
+        width: 250px;
+      }
+      .text-area{
+        width:250px;
+        height: 100px;
+      }
+    }
+  }
 }
-
+}
 
 // users/show画面
 .show-container{

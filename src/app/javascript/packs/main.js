@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // 各コード名を代入し、HTMLに表示
   for(let i = 0; i < array.length; i++) {
      // コード一覧
-    chord_name+="<div id="+array[i]+" class='chord'><a onclick= add('"+array[i]+"')><img src='/assets/"+array[i]+".png' class='chord_img' alt="+array[i]+"></a></div>";
+    chord_name+="<div id="+array[i]+" class='chords'><a onclick= add('"+array[i]+"')><img src='/assets/"+array[i]+".png' class='chord_img' alt="+array[i]+"></a></div>";
      // 音源ファイル
     ongen+="<audio id=\"sound-file_"+array[i]+"\" preaudio=\"auto\"><source src=\"/assets/"+array[i]+",.mp3\" type=\"audio/mp3\"></audio>";
      // コードを表示
@@ -136,11 +136,11 @@ window.add = function (a){
       let str= view[i].replace(/\,/,"");
       console.log(str);
    // クリック後に表示される要素
-    chord_list+="<div id="+str+" class='chord'><p class='sakuhin'><img src='/assets/"+str+".png' class='chord_img' alt="+str+"></p><p class='remove' onClick=\"sakuzyo("+i+")\">×削除</p></div>";
+    chord_list+="<div id="+str+" class='chords'><p class='sakuhin'><img src='/assets/"+str+".png' class='chord_img' alt="+str+"></p><p class='remove' onClick=\"sakuzyo("+i+")\">×削除</p></div>";
     form_hidden+= str+",";
 
   sakuhin.innerHTML = chord_list;
-  let form='<input type="hidden" value="'+form_hidden+' ," name="chord[work]" id="chord_work">';
+  let form='<input type="hidden" value="'+form_hidden+'" name="chord[work]" id="chord_work">';
 	document.getElementById('form').innerHTML = form;
   };
 };
@@ -157,21 +157,24 @@ window.sakuzyo = function (S){
   let view = cookie.match(regexp);
 
    // 各要素の空欄を生成
-  let $sakuhin_botan="";
-  let $furinaosi="";
-   // let $form_hidden ="";
+  let sakuhin_botan="";
+  let furinaosi="";
+  let form_hidden ="";
 
-   // コード名取得
+  // コード名取得
   for (let i = 0; i < view.length; i++) {
       let str= view[i].replace(/\,/,"");
-   //クッキーの振りなおし
+    //クッキーの振りなおし
     if(i!=S){
-    $sakuhin_botan+="<div id="+str+" class='chord'><p class='sakuhin'><img src='/assets/"+str+".png' class='chord_img' alt="+str+"></p><p class='remove' onClick=\"sakuzyo('"+i+"')\">×削除</p></div>\n";
-    $furinaosi+= str + ",";
+    sakuhin_botan+="<div id="+str+" class='chords'><p class='sakuhin'><img src='/assets/"+str+".png' class='chord_img' alt="+str+"></p><p class='remove' onClick=\"sakuzyo('"+i+"')\">×削除</p></div>\n";
+    furinaosi+= str + ",";
+    form_hidden+= str +",";
+    let form='<input type="hidden" value="'+form_hidden+' ," name="chord[work]" id="chord_work">';
+    document.getElementById('form').innerHTML = form;
     };
      // クッキーの再設定
-    setCookie("name", $furinaosi);
-    sakuhin.innerHTML = $sakuhin_botan;
+    setCookie("name", furinaosi);
+    sakuhin.innerHTML = sakuhin_botan;
   };
 };
 
@@ -181,7 +184,6 @@ window.sakuzyo = function (S){
 
 
 // 再生ボタン
-
 const audio_start = document.getElementById("audio_start");
 
 window.play=function (){
@@ -211,7 +213,4 @@ window.play=function (){
         audio.play();
     };
   });
-}; 
-
-
-
+};

@@ -1,2 +1,51 @@
 <h1>Chords#index</h1>
 <p>Find me in app/views/chords/index.html.erb</p>
+
+<div class="wrap">
+
+
+  <% @chords.each do |chord|%>
+    <div class="chord-wrap">
+      <div class="chord-container">
+        <div class="chord-img">
+          <%=link_to user_path(chord.user.id) do%>
+            <%= attachment_image_tag chord.user, :profile_image, fallback: "no-image.png"%>
+          <% end %>
+        </div>
+
+        <div class="chord-body-wrap">
+          <div class="chord-title">
+            <p>タイトル:<%= chord.title %></p>
+          </div>
+
+          <div class="chord-username">
+            <p>ユーザー名：<%= chord.user.username%></p>
+          </div>
+
+          <div class="chord-updated">
+            <p>投稿時間：<%= chord.updated_at.strftime("%Y-%m-%d %H:%M")%></p>
+          </div>
+
+          <div class="chord-body">
+            <p>コメント<%= simple_format chord.body%></p>
+          </div>
+        </div>
+      </div>
+      <div id="chords">
+        <div class="chord_id" data-work="<%= chord.work%>"></div>
+      </div>
+
+      <div class="play_id"></div>
+
+      </div>
+    </div>
+  <%end%>
+
+</div>
+
+  <!-- 音源再生用の要素 -->
+  <div id="ongen"></div>
+  <div id="audio_start"></div>
+
+  <%= javascript_pack_tag 'index.js', 'data-turbolinks-track': 'reload'%>
+  <%= javascript_pack_tag 'sound.js', 'data-turbolinks-track': 'reload'%>
