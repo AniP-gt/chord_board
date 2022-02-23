@@ -16,7 +16,6 @@
     <div class="no-image">
       <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png" %>
     </div>
-
     <div class="show-wrapper">
       <% if @user.id == current_user.id %>
         <div class="edit">
@@ -26,13 +25,11 @@
       <div class="show-edit">
         ユーザー名：<%= @user.username%>
       </div>
-
       <% if @user.id == current_user.id %>
         <div class="show-edit">
           メールアドレス：<%= @user.email%>
         </div>
       <%end%>
-
       <div class="show-profile">
         <span class="box-title">プロフィール</span>
         <%= @user.profile%>
@@ -40,4 +37,40 @@
     </div>
   </div>
 
+  <div class="chord-profile-wrap">
+    <% @user.chords.each do |chord|%>
+      <div class="chord-body-wrap">
+        <div class="chord-title">
+          <p>タイトル:<%= chord.title %></p>
+        </div>
+        <div class="chord-username">
+          <%=link_to user_path(chord.user.id) do%>
+            <p>作曲者：<%= chord.user.username%></p>
+          <%end%>
+        </div>
+        <div class="chord-updated">
+          <p>投稿時間：<%= chord.updated_at.strftime("%Y-%m-%d %H:%M")%></p>
+        </div>
+        <div class="chord-body">
+          <p>コメント<%= simple_format chord.body%></p>
+        </div>
+        <% if @user.id == current_user.id %>
+          <div class="chord-delete">
+            <p><%= link_to "【投稿削除】",chord_path(chord) ,method: :delete, data: {confirm:"削除しますか？"} %></p>
+          </div>
+        <%end%>
+        <div id="chords">
+          <div class="chord_id" data-work="<%= chord.work%>"></div>
+        </div>
+        <div class="play_id"></div>
+      </div>
+    <%end%>
+  </div>
 </div>
+
+  <!-- 音源再生用の要素 -->
+  <div id="ongen"></div>
+  <div id="audio_start"></div>
+
+  <%= javascript_pack_tag 'index.js', 'data-turbolinks-track': 'reload'%>
+  <%= javascript_pack_tag 'sound.js', 'data-turbolinks-track': 'reload'%>

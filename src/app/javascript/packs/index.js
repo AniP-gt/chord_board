@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // 各要素のworkデータを取得
     let data_work = chord_id[w].dataset.work;
-
+    console.log(data_work);
     // 配列を分割
     let regexp = new RegExp(/(.*?)\,/g);
     let view = data_work.match(regexp);

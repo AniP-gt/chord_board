@@ -22,6 +22,12 @@ class ChordsController < ApplicationController
     redirect_to chords_path()
   end
 
+  def destroy
+    chord = Chord.find(params[:id])
+    chord.destroy
+    redirect_to user_path(chord.user)
+  end
+
   def edit
   end
 

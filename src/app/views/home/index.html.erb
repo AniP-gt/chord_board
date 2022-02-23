@@ -2,15 +2,32 @@
   <div class="new-wrap">
     <div class="home">
       <div class="home-wrap">
-        <div class="home-container">
-          <%= link_to "アカウント登録", new_user_registration_path,class:"home-a" %>
-        </div>
-        <div class="home-container">
-          <%= link_to "ログイン", new_user_session_path,class:"home-a" %>
-        </div>
-        <div class="home-container">
-          <%= link_to "作品一覧", chords_path,class:"home-a" %>
-        </div>
+
+        <% if user_signed_in? %>
+          <div class="home-container">
+            <%= link_to "作品投稿", new_chord_path,class:"home-a" %>
+          </div>
+          <div class="home-container">
+            <%= link_to "作品一覧", chords_path,class:"home-a" %>
+          </div>
+          <div class="home-container">
+            <%= link_to "作曲者一覧", users_path,class:"home-a" %>
+          </div>
+          <div class="home-container">
+            <%= link_to "マイページ", user_path(current_user),class:"home-a" %>
+          </div>
+        <% else %>
+          <div class="home-container">
+            <%= link_to "アカウント登録", new_user_registration_path,class:"home-a" %>
+          </div>
+          <div class="home-container">
+            <%= link_to "ログイン", new_user_session_path,class:"home-a" %>
+          </div>
+          <div class="home-container">
+            <%= link_to "作品一覧", chords_path,class:"home-a" %>
+          </div>
+        <%end%>
+
       </div>
     </div>
   </div>
