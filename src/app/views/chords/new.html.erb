@@ -1,6 +1,15 @@
 <!-- メインコンテンツ -->
   <div class="wrap">
-
+  <% if @chord.errors.any?%>
+    <div class="new-alert">
+      <h2><%= pluralize(@chord.errors.count, "error")%>空欄があります</h2>
+      <ul>
+        <% @chord.errors.full_messages.each do |message|%>
+          <li><%= message%></li>
+        <%end%>
+      </ul>
+    </div>
+  <%end%>
     <!-- コード一覧 -->
     <div class="chord">
       <div class="list">
@@ -57,5 +66,5 @@
   <div id="ongen"></div>
   <div id="audio_start"></div>
 
-  <%= javascript_pack_tag 'main.js', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'sound.js', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'main.js' ,defer:true %>
+  <%= javascript_pack_tag 'sound.js' %>

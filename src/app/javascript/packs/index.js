@@ -1,3 +1,6 @@
+'use strict';
+
+
 // コード表示
 window.addEventListener('DOMContentLoaded', () => {
 

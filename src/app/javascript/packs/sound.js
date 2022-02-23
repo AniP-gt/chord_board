@@ -1,3 +1,6 @@
+'use strict';
+
+
 // 各音声ファイル再生
 
 function C(){

@@ -104,6 +104,13 @@ img {
   color: white;
 }
 
+.alert{
+  margin-top: 70px;
+  margin-bottom: -85px;
+  background-color: black;
+  color: white;
+}
+
 // ヘッダー
 header{
   position: fixed;
@@ -664,6 +671,9 @@ $p-wrap: aquamarine;
 .no-image{
   width: 250px;
   height: 250px;
+  img{
+    border-radius: 50%;
+  }
 }
 
 .index-name{
@@ -707,6 +717,9 @@ $p-wrap: aquamarine;
     .no-image{
       width:50%;
       height: 70px;
+      img{
+        border-radius: 50%;
+      }
     }
     .show-wrapper{
       margin-left: 80px;

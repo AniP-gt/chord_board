@@ -1,5 +1,15 @@
 <div class="edit-wrap">
   <div class="edit-container">
+  <% if @user.errors.any?%>
+    <div class="new-alert">
+      <h2><%= pluralize(@user.errors.count, "error")%>空欄があります</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message|%>
+          <li><%= message%></li>
+        <%end%>
+      </ul>
+    </div>
+  <%end%>
     <div class="edit-h1">
       <h1>マイページ編集</h1>
     </div>

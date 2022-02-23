@@ -1,10 +1,7 @@
 class ChordsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   def index
     @chords = Chord.all
-    # respond_to do |format|
-    #   format.html
-    #   format.json{render json: @chords}
-    # end
   end
 
   def show
@@ -18,8 +15,11 @@ class ChordsController < ApplicationController
   def create
     @chord = Chord.new(chord_params)
     @chord.user_id = current_user.id
-    @chord.save
-    redirect_to chords_path()
+    if @chord.save
+      redirect_to chords_path(), notice: '投稿に成功しました'
+    else
+      render :new
+    end
   end
 
   def destroy

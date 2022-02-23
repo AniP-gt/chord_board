@@ -42,5 +42,5 @@
   <div id="ongen"></div>
   <div id="audio_start"></div>
 
-  <%= javascript_pack_tag 'index.js', 'data-turbolinks-track': 'reload'%>
-  <%= javascript_pack_tag 'sound.js', 'data-turbolinks-track': 'reload'%>
+  <%= javascript_pack_tag 'index.js', 'data-turbolinks-track': 'reload' ,defer:true %>
+  <%= javascript_pack_tag 'sound.js' %>
