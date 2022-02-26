@@ -1,48 +1,53 @@
 <!-- メインコンテンツ -->
-  <div class="wrap">
-  <% if @chord.errors.any?%>
-    <div class="new-alert">
-      <h2><%= pluralize(@chord.errors.count, "error")%>空欄があります</h2>
-      <ul>
-        <% @chord.errors.full_messages.each do |message|%>
-          <li><%= message%></li>
-        <%end%>
-      </ul>
-    </div>
-  <%end%>
+  <section class="chordnew">
+    <% if @chord.errors.any?%>
+      <div class="new-alert">
+        <h2><%= pluralize(@chord.errors.count, "error")%>空欄があります</h2>
+        <ul>
+          <% @chord.errors.full_messages.each do |message|%>
+            <li><%= message%></li>
+          <%end%>
+        </ul>
+      </div>
+    <%end%>
+    <section class="heading">
+      <div class="heading__h1">
+        <h1>作品投稿</h1>
+      </div>
+    </section>
     <!-- コード一覧 -->
-    <div class="chord">
-      <div class="list">
-        <div class="p-chord-wrap">
-          <p id="chord_list" class="p-container">コード一覧</p>
+    <section class="chordnew__wrap">
+      <div class="chordnew__wrap--btn">
+        <div class="chordnew__wrap--btn-chord">
+          <p id="chord_list" class="chordnew__wrap--btn-chord-p">コード一覧</p>
         </div>
-        <div class="p-degree-wrap">
-          <p id="degree_list" class="p-container">ディグリーネーム</p>
+        <div class="chordnew__wrap--btn-degree">
+          <p id="degree_list" class="chordnew__wrap--btn-degree-p">ディグリーネーム</p>
         </div>
       </div>
-      <p class="chord-word">ボタンをクリックすると、作品一覧に表示されます。
-        好きなコード進行を入力して投稿してみましょう！</p>
+      <p class="explanation">ボタンをクリックすると、作品一覧に表示されます。好きなコード進行を入力して投稿してみましょう！
+      <br>※コードの音の長さは２拍分です。１小節につき２コードとなります。ディグリーネームについても同様です。
+      </p>
       <div id="chords"></div>
       <div id="degrees"></div>
-    </div>
+    </section>
 
     <!-- 作品一覧 -->
-    <div class="work">
-      <div class="p-wrap">
-        <p class="p-container">作品一覧</p>
+    <section class="work">
+      <div class="work__wrap">
+        <p class="work__wrap--p">作品一覧</p>
       </div>
       <div id="sakuhin"></div>
-    </div>
+    </section>
 
     <!-- 音源読み込み/再生 -->
-    <div id="chord_play" class="play" onclick="play()">
+    <section id="chord_play" class="play" onclick="play()">
       <p id="chord_play_p" class="play-btn">再生</p>
-    </div>
-
+    </section>
 
 
     <%= form_for @chord do |f|%>
-      <div class="form">
+      <section class="form">
         <div class="field">
           <%= f.label :title,"【タイトル】" ,class:"label"%><br>
           <%= f.text_field :title, class:"input"%>
@@ -58,13 +63,13 @@
         <div class="actions">
           <%= f.submit "投稿" , class:"submit"%>
         </div>
-      </div>
+      </section>
     <%end%>
-  </div>
+  </section>
 
   <!-- 音源再生用の要素 -->
   <div id="ongen"></div>
   <div id="audio_start"></div>
 
-  <%= javascript_pack_tag 'main.js' ,defer:true %>
+  <%= javascript_pack_tag 'main.js'  %>
   <%= javascript_pack_tag 'sound.js' %>

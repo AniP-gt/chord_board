@@ -10,126 +10,48 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+
  *= require_self
  */
 
 @charset "UTF-8";
 
-// リセット
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: none;
-  font-style: normal;
-  text-align: left;
-  zoom: 1;
-  text-decoration: none;
-}
+@import "reset";
 
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-table {
-  border-collapse: collapse;
-  font-family: inherit;
-}
-
-h1, h2, h3, h4, h5 {
-  font-size: 100%;
-  font-weight: normal;
-  line-height: 1;
-}
-
-input, textarea, select {
-  font-family: inherit;
-  font-size: 16px;
-}
-
-input[type="button"], input[type="text"], input[type="submit"] {
-  -webkit-appearance: none;
-  border-radius: 0;
-}
-
-textarea {
-  resize: none;
-  -webkit-appearance: none;
-  border-radius: 0;
-}
-
-th, td {
-  border-collapse: collapse;
-}
-
-table th, table td {
-  white-space: nowrap;
-}
-
-ul, ol, li {
-  list-style-type: none;
-}
-
-img {
-  vertical-align: text-bottom;
-  vertical-align: -webkit-baseline-middle;
-  max-width: 100%;
-  height: auto;
-  width: auto;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
-
-
-// 共通パーツ
+@import "mixin";
 
 // フラッシュメッセージ
 .notice{
-  margin-top: 70px;
-  margin-bottom: -85px;
-  background-color: black;
-  color: white;
+  @include message()
 }
 
 .alert{
-  margin-top: 70px;
-  margin-bottom: -85px;
-  background-color: black;
-  color: white;
+  @include message()
 }
 
-// ヘッダー
-header{
+
+// ヘッダーロゴのフォント
+@import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
+
+// ヘッダー/layouts@application
+.header{
   position: fixed;
   top:0;
   left:0;
   width: 100%;
   z-index: 100;
-  .header-wrap{
+  &__wrap{
     display: flex;
     justify-content: space-between;
     background-color: black;
     height: 60px;
     padding-top: 10px;
-    .logo{
+    &--logo{
       font-size: 40px;
       font-weight: bold;
       color: white;
       margin-left: 30px;
-      font-family: 'Festive', cursive;
+      font-family: 'Josefin Sans', sans-serif;
     }
     nav{
       .menu{
@@ -145,7 +67,6 @@ header{
         }
       }
     }
-  }
   }
   .btn {
     position: fixed;
@@ -179,25 +100,13 @@ header{
       }
     }
   }
-
-
-
-// フッター
-footer{
-  margin-top: auto;
-  .footer-wrap{
-    background-color: black;
-    height: 60px;
-    p{
-      line-height: 60px;
-      color: white;
-      text-align: center;
-    }
-  }
 }
 
 
-// home/new/login共通
+
+
+
+// 背景画像　devise/index@home/new@sessions/registrations@new共通
 .body-wrap{
   background-image: image-url('background_img.jpg');
   background-position: center center;
@@ -210,8 +119,7 @@ footer{
 
 
 
-
-// ログイン
+// ログイン/new@sessions
 .new-wrap{
   margin: 0 auto;
   margin-top: 80px;
@@ -238,19 +146,7 @@ footer{
     .actions{
       margin: 20px 0;
       .submit{
-        background-color: rgb(17, 209, 0);
-        color: white;
-        border: none;
-        border-radius: 30px;
-        width: 150px;
-        height: 50px;
-        box-shadow: 0 2px rgb(204, 204, 204);
-        cursor: pointer;
-        &:active{
-          -webkit-transform: translateY(4px);
-          transform: translateY(2px);/*下に動く*/
-          box-shadow: none;/*線を消す*/
-        }
+        @include submit();
       }
     }
     #error_explanation{
@@ -271,7 +167,9 @@ footer{
 }
 
 
-// home画面
+
+
+// index@home画面
 .home{
   .home-wrap{
     .home-container{
@@ -301,96 +199,62 @@ footer{
 
 
 
-// login画面
-.login{
-  .login-wrap{
-    p{
-      color: white;
+
+// 各ページ見出し
+.heading{
+  &__h1{
+    @include heading();
+    width: 10%;
+    h1{
+      @include heading--h1();
     }
   }
 }
 
 
 
-// new画面
-.new{
-  .new-wrap{
-    p{
-      color: white;
-    }
-  }
-}
-
-// chord画面
-// index画面
-@mixin p-wrap {
-  margin: 20px 20px 15px;
-  background-color: blue;
-  width: 30%;
-  height: 40px;
-  border-radius: 10px;
-}
-
-@mixin p-container {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: white;
-  text-align: center;
-  line-height: 40px;
-}
-
-@mixin chord-degree {
-  width:9%;
-  cursor: pointer;
-  margin:0.5%;
-}
-
-@mixin chord-degree-img {
-  border-radius: 30%;
-}
-
-$p-wrap: aquamarine;
-
- // コード一覧
-.wrap{
-  .chord{
-    margin: 100px 0 50px;
-    .list{
+// 作品投稿/new@chord
+.chordnew{
+  margin: 90px 30px 0;
+  // コード一覧
+  .chordnew__wrap{
+    margin: 30px 0 50px;
+    // コード、ディグリーボタン
+    &--btn{
       display: flex;
-      .p-chord-wrap{
-        @include p-wrap;
+      &-chord{
+        @include change_btn;
         cursor: pointer;
         &:hover{
-          background-color: $p-wrap;
+          background-color: $btn-wrap;
         }
-        .p-container{
-          @include p-container;
+        &-p{
+          @include change_btn-p;
         }
       }
-      .p-degree-wrap{
-        @include p-wrap;
+      &-degree{
+        @include change_btn;
         cursor: pointer;
         &:hover{
-          background-color: $p-wrap;
+          background-color: $btn-wrap;
         }
-        .p-container{
-          @include p-container;
+        &-p{
+          @include change_btn-p;
         }
       }
     }
-    .chord-word{
+    // 説明文
+    .explanation{
       margin: 20px 15px 20px;
     }
+    // コード画面
     #chords{
       display: flex;
       flex-wrap: wrap;
-      &:focus{
-        outline: none;
-      }
       .chords{
-        @include chord-degree;
+        @include chord_degree;
         .chord_img{
-          @include chord-degree-img;
+          @include chord_degree-img;
         }
         &:hover {
           opacity: 0.6;
@@ -400,17 +264,15 @@ $p-wrap: aquamarine;
         }
       }
     }
+    // ディグリー画面
     #degrees{
       display: flex;
       flex-wrap: wrap;
       display: none;
-      &:focus{
-        outline: none;
-      }
       .degree{
-        @include chord-degree;
+        @include chord_degree;
         .degree_img{
-          @include chord-degree-img;
+          @include chord_degree-img;
         }
         &:hover {
           opacity: 0.6;
@@ -421,12 +283,13 @@ $p-wrap: aquamarine;
       }
     }
   }
+  // 作品一覧
   .work{
     margin:80px 0 50px;
-    .p-wrap{
-      @include p-wrap;
-      .p-container{
-        @include p-container;
+    &__wrap{
+      @include change_btn;
+      &--p{
+        @include change_btn-p;
       }
     }
     #sakuhin{
@@ -463,28 +326,7 @@ $p-wrap: aquamarine;
       }
     }
   }
-  .play{
-    cursor: pointer;
-    background-color:cyan;
-    width: 200px;
-    height: 60px;
-    border-radius: 50%;
-    margin: 0 auto;
-    margin-bottom: 70px;
-    &:hover{
-      background-color:khaki;
-    }
-    .play-btn{
-      line-height: 60px;
-      text-align: center;
-      color: white;
-      font-size: 25px;
-      font-weight: bold;
-      &:hover{
-        color: black;
-      }
-    }
-  }
+  // 送信フォーム
   .form{
     display: flex;
     flex-direction: column;
@@ -508,86 +350,64 @@ $p-wrap: aquamarine;
       margin-top: 10px;
       margin-bottom: 30px;
       .submit{
-        background-color: rgb(17, 209, 0);
-        color: white;
-        border: none;
-        border-radius: 30px;
-        width: 200px;
-        height: 50px;
-        box-shadow: 0 2px rgb(204, 204, 204);
-        font-size: 20px;
-        cursor: pointer;
-        &:active{
-          -webkit-transform: translateY(4px);
-          transform: translateY(2px);
-          box-shadow: none;
-        }
+        @include submit();
       }
     }
   }
 }
 
 
-@mixin chord-wrap {
-  padding: 0.5em 1em;
-  margin: 2em 0;
-  padding-top: 50px;
-  color: #474747;
-  background: whitesmoke;/*背景色*/
-  border-left: double 7px #4ec4d3;/*左線*/
-  border-right: double 7px #4ec4d3;/*右線*/
-}
 
-// 投稿一覧画面
 
-.wrap{
+// 投稿一覧画面/index@chord
+.chordindex{
   margin-top: 80px;
+  .heading{
+    margin: 40px ;
+  }
 }
 
-.chord-wrap{
-  @include chord-wrap()
+.chordindex__wrap{
+  @include chord__wrap();
+  width:80%;
+  margin: 0 auto;
+  margin-bottom: 50px;
 }
 
-.chord-container{
+.chordindex__wrap--container{
   display: flex;
 }
 
-.chord-img{
+.chordindex__wrap--img{
   width: 20%;
   height: 50%;
   img{
     border-radius: 50%;
+    &:hover{
+      opacity: 0.8;
+    }
   }
 }
 
-.chord-body-wrap{
+.chordindex__body{
   margin-left: 30px;
   width:50%;
 }
 
-.chord-title{
+.chordindex__body--title{
   margin-bottom: 10px;
 }
 
-@mixin chord {
-  margin-bottom: 10px;
-  padding-top: 10px;
-  border-top: dashed 2px #000000;
-}
-.chord-username{
-  @include chord();
+.chordindex__body--username{
+  @include chordindex();
 }
 
-.chord-updated{
-  @include chord();
+.chordindex__body--updated{
+  @include chordindex();
 }
 
-
-.chord-body{
-  border-top: dashed 2px #000000;
-  border-bottom: dashed 2px #000000;
-  margin: 10px 0 10px;
-  padding: 10px 0;
+.chordindex__body--body{
+  @include chordbody();
 }
 
 .chord_id{
@@ -601,11 +421,7 @@ $p-wrap: aquamarine;
 }
 
 .chord_img{
-  @include chord-degree-img;
-}
-
-.chord-delete{
-  margin-bottom: 20px;
+  @include chord_degree-img;
 }
 
 .play_id{
@@ -614,51 +430,33 @@ $p-wrap: aquamarine;
 }
 
 .play{
-  cursor: pointer;
-  background-color:cyan;
-  width: 200px;
-  height: 60px;
-  border-radius: 50%;
-  margin: 0 auto;
-
-  &:hover{
-    background-color:khaki;
-  }
+  @include play();
 }
+
 .play-btn{
-  line-height: 60px;
-  text-align: center;
-  color: white;
-  font-size: 25px;
-  font-weight: bold;
-  &:hover{
-    color: black;
-  }
+  @include play-btn();
 }
 
 
 
-// フォーム送信
-.form{
-  margin: 0 auto;
-  .form_title{
-    display: flex;
-  }
-}
 
 
-// 投稿者一覧
-.index-wrap{
+// 投稿者一覧/index@user
+.userindex{
   margin-top: 80px;
+  .heading{
+    margin-left:30px;
+  }
 }
 
-.index-wrapper{
+.userindex__wrap{
   display: flex;
-  margin-right: 30px;
-  margin-left: 30px;
+  flex-wrap: wrap;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
-.index-container{
+.userindex__wrap--container{
   padding: 0.5em 1em;
   margin: 2em 0;
   margin-right: 20px;
@@ -673,94 +471,61 @@ $p-wrap: aquamarine;
   height: 250px;
   img{
     border-radius: 50%;
+    &:hover{
+      opacity: 0.8;
+    }
   }
 }
 
-.index-name{
+.userindex__wrap--name{
   font-size: 20px;
 }
 
 
-// マイページ
-.show-wrap{
-  margin: 90px 30px 0;
-  .show-h1{
-    font-size: 25px;
-    width: 200px;
-    margin:2em 0;
-    position: relative;
-    z-index: 1;
-    padding: 0.5em 1.5em;
-    border-top: solid 2px black;
-    border-bottom: solid 2px black;
-    &::before, &::after{
-      content: '';
-      position: absolute;
-      top: -10px;
-      width: 2px;
-      height: -webkit-calc(100% + 20px);
-      height: calc(100% + 20px);
-      background-color: black;
-    }
-    &::before{
-      left: 10px;
-    }
-    &::after{
-      right: 10px;
-    }
-    h1{
-      text-align: center;
-    }
+
+
+// マイページ/show@user
+.usershow_wrap{
+  .heading{
+    margin: 90px 30px 0;
   }
-  .show-container{
+  .usershow{
     display: flex;
-    .no-image{
-      width:50%;
-      height: 70px;
+    &--image{
+      width:30%;
+      height: 50px;
+      margin-left: 20px;
       img{
         border-radius: 50%;
       }
     }
-    .show-wrapper{
+    &__conatiner{
       margin-left: 80px;
-      .edit-btn{
+      &--edit_btn{
+        @include submit();
         display: block;
         text-align: center;
         font-size: 24px;
-        background-color: rgb(17, 209, 0);
-        color: white;
-        border: none;
-        border-radius: 30px;
         width: 60%;
         height: 40px;
         line-height: 40px;
         margin-bottom: 20px;
-        box-shadow: 0 2px rgb(204, 204, 204);
-        cursor: pointer;
-        &:active{
-          -webkit-transform: translateY(4px);
-          transform: translateY(2px);
-          box-shadow: none;
-        }
       }
-      .show-edit{
+      &--show_edit{
+        @include chord__wrap();
         margin-bottom: 10px;
-        padding: 0.5em 1em;
-        color: #474747;
-        background: whitesmoke;/*背景色*/
-        border-left: double 7px #4ec4d3;/*左線*/
-        border-right: double 7px #4ec4d3;/*右線*/
+        padding: 10px;
       }
-      .show-profile{
+      &--show_profile{
         z-index: 1;
-        width: 100%;
+        width: 90%;
         height: 80%;
         position: relative;
         margin: 2em 0;
         padding: 0.5em 1em;
         border: solid 3px #95ccff;
         border-radius: 8px;
-        .box-title{
+        &_box-title{
           position: absolute;
           display: inline-block;
           top: -13px;
@@ -775,83 +540,70 @@ $p-wrap: aquamarine;
       }
     }
   }
-  .chord-profile-wrap{
+  .usershow_chord{
     margin-top: 300px;
-    .chord-body-wrap{
-      width: 95%;
-      @include chord-wrap()
+    &__container{
+      @include chord__wrap();
+      width:80%;
+      margin: 0 auto;
+      margin-bottom: 50px;
+      &--title{
+        margin-bottom: 10px;
+      }
+      &--username{
+        @include chordindex();
+      }
+      &--updated{
+        @include chordindex();
+      }
+      &--body{
+        @include chordbody();
+      }
+      &--delete{
+        margin-bottom: 20px;
+      }
     }
   }
 }
 
 
-// 編集画面
-.edit-wrap{
+
+
+// 編集画面edit@user
+.useredit{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  .edit-container{
+  &__container{
     margin:0 auto;
-    margin-top: 80px;
-    .edit-h1{
-      z-index:1;
-      font-size: 25px;
-      width: 200px;
-      position: relative;
-      padding: 0.5em 1.5em;
-      border-top: solid 2px black;
-      border-bottom: solid 2px black;
-      &::before, &::after{
-        content: '';
-        position: absolute;
-        top: -10px;
-        width: 2px;
-        height: -webkit-calc(100% + 20px);
-        height: calc(100% + 20px);
-        background-color: black;
-      }
-      &::before{
-        left: 10px;
-      }
-      &::after{
-        right: 10px;
-      }
-      h1{
-        text-align: center;
+    margin-top: 30px;
+    .heading{
+      &__h1{
+        width: 40%;
+        margin-bottom: 10px;
       }
     }
-    .form{
-      .field{
-        margin-top: 15px;
-        .label{
-          font-size: 18px;
-        }
-        .input{
-          width: 500px;
-        }
-        .text-area{
-          width:500px;
-          height: 100px;
-        }
+  }
+  .form{
+    .field{
+      margin-top: 10px;
+      .label{
+        font-size: 18px;
       }
-      .actions{
-        margin: 10px 0;
-        .submit{
-          background-color: rgb(17, 209, 0);
-          color: white;
-          border: none;
-          border-radius: 30px;
-          width: 150px;
-          height: 35px;
-          box-shadow: 0 2px rgb(204, 204, 204);
-          cursor: pointer;
-          &:active{
-            -webkit-transform: translateY(4px);
-            transform: translateY(2px);
-            box-shadow: none;
-          }
-        }
+      .input{
+        width: 500px;
+      }
+      .text-area{
+        width:500px;
+        height: 80px;
+      }
+    }
+    .actions{
+      margin: 10px 0;
+      .submit{
+        @include submit();
       }
     }
   }
 }
+

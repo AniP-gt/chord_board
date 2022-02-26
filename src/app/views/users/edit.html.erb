@@ -1,20 +1,25 @@
-<div class="edit-wrap">
-  <div class="edit-container">
-  <% if @user.errors.any?%>
-    <div class="new-alert">
-      <h2><%= pluralize(@user.errors.count, "error")%>空欄があります</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |message|%>
-          <li><%= message%></li>
-        <%end%>
-      </ul>
-    </div>
-  <%end%>
-    <div class="edit-h1">
-      <h1>マイページ編集</h1>
-    </div>
+<section class="useredit">
+  <div class="useredit__container">
+
+    <% if @user.errors.any?%>
+      <section class="new-alert">
+        <h2><%= pluralize(@user.errors.count, "error")%>空欄があります</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message|%>
+            <li><%= message%></li>
+          <%end%>
+        </ul>
+      </section>
+    <%end%>
+
+    <section class="heading">
+      <div class="heading__h1">
+        <h1>マイページ編集</h1>
+      </div>
+    </section>
+
     <%= form_for @user do |f|%>
-    <div class="form">
+    <section class="form">
       <div class="field">
         <%= f.label :username,"ユーザー名",class:"label"%><br>
         <%= f.text_field :username, class:"input"%>
@@ -38,7 +43,7 @@
       <div class="actions">
         <%= f.submit "更　新", class:"submit"%>
       </div>
-    </div>
+    </section>
     <% end %>
   </div>
-</div>
+</section>

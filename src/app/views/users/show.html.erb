@@ -1,76 +1,88 @@
-<div class="show-wrap">
+<section class="usershow_wrap">
 
-  <div class="show-wrap-header">
+  <section class="heading">
     <% if @user.id == current_user.id %>
-      <div class="show-h1">
+      <div class="heading__h1">
         <h1>マイページ</h1>
       </div>
     <%else%>
-      <div class="show-h1">
+      <div class="heading__h1">
         <h1>作曲者ページ</h1>
       </div>
     <%end%>
-  </div>
+  </section>
 
-  <div class="show-container">
-    <div class="no-image">
+  <section class="usershow">
+    <div class="usershow--image">
       <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png" %>
     </div>
-    <div class="show-wrapper">
+    <div class="usershow__conatiner">
       <% if @user.id == current_user.id %>
-        <div class="edit">
-          <%=link_to"編集", edit_user_path(@user), class:"edit-btn" %>
+        <div class="usershow__conatiner--edit">
+          <p><%=link_to"編集", edit_user_path(@user), class:"usershow__conatiner--edit_btn" %></p>
         </div>
       <%end%>
-      <div class="show-edit">
-        ユーザー名：<%= @user.username%>
+      <div class="usershow__conatiner--show_edit">
+        <p>ユーザー名：<%= @user.username%></p>
       </div>
       <% if @user.id == current_user.id %>
-        <div class="show-edit">
-          メールアドレス：<%= @user.email%>
+        <div class="usershow__conatiner--show_edit">
+          <p>メールアドレス：<%= @user.email%></p>
         </div>
       <%end%>
-      <div class="show-profile">
-        <span class="box-title">プロフィール</span>
+      <div class="usershow__conatiner--show_profile">
+        <span class="usershow__conatiner--show_profile_box-title">プロフィール</span>
         <%= @user.profile%>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="chord-profile-wrap">
+  <section class="usershow_chord">
+    <div class="heading">
+      <div class="heading__h1">
+        <h1>投稿作品</h1>
+      </div>
+    </div>
     <% @user.chords.each do |chord|%>
-      <div class="chord-body-wrap">
-        <div class="chord-title">
-          <p>タイトル:<%= chord.title %></p>
+      <section class="usershow_chord__container">
+        <div class="usershow_chord__container--title">
+          <p>【タイトル】
+          <br><%= chord.title %></p>
         </div>
-        <div class="chord-username">
+        <div class="usershow_chord__container--username">
           <%=link_to user_path(chord.user.id) do%>
-            <p>作曲者：<%= chord.user.username%></p>
+            <p>【作曲者】
+            <br><%= chord.user.username%></p>
           <%end%>
         </div>
-        <div class="chord-updated">
-          <p>投稿時間：<%= chord.updated_at.strftime("%Y-%m-%d %H:%M")%></p>
+        <div class="usershow_chord__container--updated">
+          <p>【投稿時間】
+          <br><%= chord.updated_at.strftime("%Y-%m-%d %H:%M")%></p>
         </div>
-        <div class="chord-body">
-          <p>コメント<%= simple_format chord.body%></p>
+        <div class="usershow_chord__container--body">
+          <p>【コメント】
+          <br><%= simple_format chord.body%></p>
         </div>
         <% if @user.id == current_user.id %>
-          <div class="chord-delete">
+          <div class="usershow_chord__container--delete">
             <p><%= link_to "【投稿削除】",chord_path(chord) ,method: :delete, data: {confirm:"削除しますか？"} %></p>
           </div>
         <%end%>
+        <%#　コード表示 %>
         <div id="chords">
           <div class="chord_id" data-work="<%= chord.work%>"></div>
         </div>
+        <%# 再生ボタン %>
         <div class="play_id"></div>
-      </div>
+      </section>
     <%end%>
-  </div>
-</div>
+  </section>
 
-  <!-- 音源再生用の要素 -->
+    <!-- 音源再生用の要素 -->
   <div id="ongen"></div>
   <div id="audio_start"></div>
 
-  <%= javascript_pack_tag 'index.js', 'data-turbolinks-track': 'reload',defer:true%>
+</section>
+
+  <%= javascript_pack_tag 'index.js' %>
   <%= javascript_pack_tag 'sound.js' %>

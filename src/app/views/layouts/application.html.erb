@@ -20,9 +20,9 @@
     <% end %>
 
     <!-- ヘッダー -->
-    <header>
-      <div class="header-wrap">
-        <%= link_to root_path, class:"logo" do %>
+    <header class="header">
+      <div class="header__wrap">
+        <%= link_to root_path, class:"header__wrap--logo" do %>
           <h1>ChordBoard</h1>
         <% end %>
 
@@ -53,14 +53,7 @@
         </button>
       </div>
     </header>
-<%#
-    <!-- フッター -->
-    <footer>
-      <div class="footer-wrap">
-        <p>Copyright</p>
-      </div>
-    </footer> %>
-      <%= javascript_pack_tag 'sub.js', 'data-turbolinks-track': 'reload'%>
+      <%= javascript_pack_tag 'sub.js' %>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,126 @@
+// フラッシュメッセージ
+@mixin message {
+  margin-top: 70px;
+  margin-bottom: -85px;
+  background-color: black;
+  color: white;
+}
+
+
+// 送信ボタン
+@mixin submit {
+  background-color: rgb(17, 209, 0);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  width: 200px;
+  height: 50px;
+  box-shadow: 0 2px rgb(204, 204, 204);
+  font-size: 20px;
+  cursor: pointer;
+  &:active{
+    -webkit-transform: translateY(4px);
+    transform: translateY(2px);
+    box-shadow: none;
+  }
+}
+
+
+// 見出し
+@mixin heading{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  width: 20%;
+  height: 40px;
+  color: #00BCD4;
+  font-size: 25px;
+  font-weight: bold;
+  background: #e4fcff;
+  border-top: solid 6px #1dc1d6;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.32);
+}
+
+@mixin heading--h1 {
+  text-align: center;
+  line-height: 40px;
+}
+
+
+// 再生ボタン
+@mixin play {
+  cursor: pointer;
+  background-color:cyan;
+  width: 200px;
+  height: 60px;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-bottom: 70px;
+  &:hover{
+    background-color:khaki;
+  }
+}
+@mixin play-btn {
+  line-height: 60px;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  &:hover{
+    color: black;
+  }
+}
+
+
+// 作品投稿/new@chord
+@mixin change_btn {
+  margin: 20px 20px 15px;
+  background-color: blue;
+  width: 30%;
+  height: 40px;
+  border-radius: 10px;
+}
+
+@mixin change_btn-p {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+}
+
+@mixin chord_degree {
+  width:9%;
+  cursor: pointer;
+  margin:0.5%;
+}
+
+@mixin chord_degree-img {
+  border-radius: 30%;
+}
+
+$btn-wrap: aquamarine;
+
+
+// 投稿作品コンテナ
+@mixin chord__wrap {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  padding-top: 50px;
+  color: #474747;
+  background: whitesmoke;
+  border-left: double 7px #4ec4d3;
+  border-right: double 7px #4ec4d3;
+}
+
+@mixin chordindex {
+  margin-bottom: 10px;
+  padding-top: 10px;
+  border-top: dashed 2px #000000;
+}
+
+@mixin chordbody {
+  border-top: dashed 2px #000000;
+  border-bottom: dashed 2px #000000;
+  margin: 10px 0 10px;
+  padding: 10px 0;
+}
