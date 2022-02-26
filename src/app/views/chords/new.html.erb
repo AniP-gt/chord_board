@@ -2,7 +2,7 @@
   <section class="chordnew">
     <% if @chord.errors.any?%>
       <div class="new-alert">
-        <h2><%= pluralize(@chord.errors.count, "error")%>空欄があります</h2>
+        <h2><%= pluralize(@chord.errors.count, "エラー　")%>空欄があります</h2>
         <ul>
           <% @chord.errors.full_messages.each do |message|%>
             <li><%= message%></li>
@@ -71,5 +71,5 @@
   <div id="ongen"></div>
   <div id="audio_start"></div>
 
-  <%= javascript_pack_tag 'main.js'  %>
+  <%= javascript_pack_tag 'main.js' ,defer: true %>
   <%= javascript_pack_tag 'sound.js' %>

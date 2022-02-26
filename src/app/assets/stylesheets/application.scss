@@ -15,20 +15,21 @@
  */
 
 @charset "UTF-8";
-
 @import "reset";
-
 @import "mixin";
 
 // フラッシュメッセージ
 .notice{
-  @include message()
+  @include message();
 }
 
 .alert{
-  @include message()
+  @include message();
 }
 
+.new-alert{
+  color: red;
+}
 
 // ヘッダーロゴのフォント
 @import url('https://fonts.googleapis.com/css2?family=Festive&display=swap');
@@ -576,9 +577,10 @@
   min-height: 100vh;
   &__container{
     margin:0 auto;
-    margin-top: 30px;
+    margin-top: 80px;
     .heading{
       &__h1{
+        margin: 0 ;
         width: 40%;
         margin-bottom: 10px;
       }

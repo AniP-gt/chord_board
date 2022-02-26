@@ -43,7 +43,7 @@
         <h1>投稿作品</h1>
       </div>
     </div>
-    <% @user.chords.each do |chord|%>
+    <% @user.chords.order(created_at: :desc).each do |chord|%>
       <section class="usershow_chord__container">
         <div class="usershow_chord__container--title">
           <p>【タイトル】

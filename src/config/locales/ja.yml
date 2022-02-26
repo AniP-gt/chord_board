@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      chord: コード
+    attributes:
+      chord:
+        title: タイトル
+        body: コメント
+        work: コード
+      user:
+        username: ユーザー名

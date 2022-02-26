@@ -1,10 +1,7 @@
 class ChordsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   def index
-    @chords = Chord.all
-  end
-
-  def show
+    @chords = Chord.all.order(created_at: :desc)
   end
 
   def new
@@ -26,9 +23,6 @@ class ChordsController < ApplicationController
     chord = Chord.find(params[:id])
     chord.destroy
     redirect_to user_path(chord.user)
-  end
-
-  def edit
   end
 
   private

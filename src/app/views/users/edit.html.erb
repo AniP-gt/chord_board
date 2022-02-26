@@ -3,7 +3,7 @@
 
     <% if @user.errors.any?%>
       <section class="new-alert">
-        <h2><%= pluralize(@user.errors.count, "error")%>空欄があります</h2>
+        <h2><%= pluralize(@user.errors.count, "エラー")%>空欄があります</h2>
         <ul>
           <% @user.errors.full_messages.each do |message|%>
             <li><%= message%></li>

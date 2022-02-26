@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :users
   resources :chords
+  # get  'chords/index'
+  # get  'chords/new'
 end
