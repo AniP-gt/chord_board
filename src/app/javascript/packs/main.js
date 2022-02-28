@@ -157,8 +157,8 @@ window.sakuzyo = function (S){
   let view = cookie.match(regexp);
 
    // 各要素の空欄を生成
-  let sakuhin_botan="";
-  let furinaosi="";
+  let sakuhin_btn="";
+  let resetting="";
   let form_hidden ="";
 
   // コード名取得
@@ -166,15 +166,15 @@ window.sakuzyo = function (S){
       let str= view[i].replace(/\,/,"");
     //クッキーの振りなおし
     if(i!=S){
-    sakuhin_botan+="<div id="+str+" class='chords'><p class='sakuhin'><img src='/assets/"+str+".png' class='chord_img' alt="+str+"></p><p class='remove' onClick=\"sakuzyo('"+i+"')\">×削除</p></div>\n";
-    furinaosi+= str + ",";
+    sakuhin_btn+="<div id="+str+" class='chords'><p class='sakuhin'><img src='/assets/"+str+".png' class='chord_img' alt="+str+"></p><p class='remove' onClick=\"sakuzyo('"+i+"')\">×削除</p></div>\n";
+    resetting+= str + ",";
     form_hidden+= str +",";
     let form='<input type="hidden" value="'+form_hidden+' ," name="chord[work]" id="chord_work">';
     document.getElementById('form').innerHTML = form;
     };
      // クッキーの再設定
-    setCookie("name", furinaosi);
-    sakuhin.innerHTML = sakuhin_botan;
+    setCookie("name", resetting);
+    sakuhin.innerHTML = sakuhin_btn;
   };
 };
 
@@ -187,7 +187,7 @@ window.sakuzyo = function (S){
 const audio_start = document.getElementById("audio_start");
 
 window.play=function (){
-  // クッキー取得
+
   let cookie = getCookie("name");
   let regexp = new RegExp(/(.*?)\,/g);
   let view = cookie.match(regexp);
@@ -200,7 +200,6 @@ window.play=function (){
   // オーディオの表示
   let audio = document.createElement('audio');
   audio_start.appendChild(audio);
-//   audio.controls = true; 再生ボタンを表示させる
   audio.src = view[0];
   audio.play();
 
