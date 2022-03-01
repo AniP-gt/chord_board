@@ -266,11 +266,13 @@
 
 // 編集画面edit@user
 .useredit{
+  margin-top: 80px;
   &__container{
     margin: 20px;
     .heading{
       &__h1{
-        width: 80%;
+        width: 60%;
+        margin: 0 auto;
       }
     }
   }

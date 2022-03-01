@@ -89,8 +89,6 @@ function setCookie(name, value, days) {
   };
   // クッキーを設定する
   document.cookie = name + "=" + value + expires ;
-// 使用例:
-// setCookie('session', 'test', 12);
 };
 
 // クッキーを取得する関数
@@ -126,7 +124,6 @@ window.add = function (a){
   let regexp = new RegExp(/(.*?)\,/g);
    // matchメソッドでクッキーから取得
   let view = cookie.match(regexp);
-  console.log(view);
    // 要素追加用変数
   let chord_list="";
   let form_hidden="";
@@ -134,7 +131,6 @@ window.add = function (a){
    // コード名取得
   for (let i = 0; i < view.length; i++) {
       let str= view[i].replace(/\,/,"");
-      console.log(str);
    // クリック後に表示される要素
     chord_list+="<div id="+str+" class='chords'><p class='sakuhin'><img src='/assets/"+str+".png' class='chord_img' alt="+str+"></p><p class='remove' onClick=\"sakuzyo("+i+")\">×削除</p></div>";
     form_hidden+= str+",";
