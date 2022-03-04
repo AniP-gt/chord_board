@@ -5,5 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image
   has_many :chords, dependent: :destroy
-  validates :username, presence: true
+  with_options presence: true do
+    validates :username
+    validates :email
+    validates :password
+    validates :password_confirmation
+  end
 end
