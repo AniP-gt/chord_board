@@ -1,6 +1,10 @@
 FactoryBot.define do
   factory :relationship do
-    follower_id { 1 }
-    followed_id { 1 }
+    username              {"test"}
+    sequence(:email) { |n| "test#{n}@example.com" }
+    password              {"123456"}
+    password_confirmation {"123456"}
+    sequence(:follower_id) { n }
+    sequence(:followed_id) { n }
   end
 end
