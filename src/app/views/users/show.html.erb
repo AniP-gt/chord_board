@@ -16,22 +16,46 @@
     <div class="usershow--image">
       <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png" %>
     </div>
-    <div class="usershow__conatiner">
+    <div class="usershow__container">
       <% if @user.id == current_user.id %>
-        <div class="usershow__conatiner--edit">
-          <p><%=link_to"編集", edit_user_path(@user), class:"usershow__conatiner--edit_btn" %></p>
+        <div class="usershow__container--edit">
+          <p><%=link_to"編集", edit_user_path(@user), class:"usershow__container--edit_btn" %></p>
+        </div>
+      <%else%>
+        <div class="usershow__container--follow">
+          <% if current_user.following?(@user)%>
+            <%= link_to user_relationships_path(@user.id),method: :delete do%>
+              <button class="usershow__container--follow_btn-remove">フォローを外す</button>
+            <%end%>
+          <%else%>
+            <%= link_to user_relationships_path(@user.id),method: :post do%>
+              <button class="usershow__container--follow_btn-do">フォローする</button>
+            <%end%>
+          <%end %>
         </div>
       <%end%>
-      <div class="usershow__conatiner--show_edit">
+      <div class="usershow__container--follow_wrap">
+        <%=link_to follows_user_path(@user) do%>
+          <div class="usershow__container--follow_wrap_count">
+            <p><span class="usershow__container--follow_wrap_count-int"><%= @user.follows.count%></span>フォロー</p>
+          </div>
+        <%end%>
+        <%=link_to followers_user_path(@user) do%>
+          <div class="usershow__container--follow_wrap_count">
+            <p><span class="usershow__container--follow_wrap_count-int"><%= @user.followers.count%></span>フォロワー</p>
+          </div>
+        <%end%>
+      </div>
+      <div class="usershow__container--show_edit">
         <p>ユーザー名：<%= @user.username%></p>
       </div>
       <% if @user.id == current_user.id %>
-        <div class="usershow__conatiner--show_edit">
+        <div class="usershow__container--show_edit">
           <p>メールアドレス：<%= @user.email%></p>
         </div>
       <%end%>
-      <div class="usershow__conatiner--show_profile">
-        <span class="usershow__conatiner--show_profile_box-title">プロフィール</span>
+      <div class="usershow__container--show_profile">
+        <span class="usershow__container--show_profile_box-title">プロフィール</span>
         <%= @user.profile%>
       </div>
     </div>

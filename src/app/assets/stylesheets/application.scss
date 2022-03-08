@@ -467,6 +467,33 @@
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 
+.userindex__wrap--follow_btn-remove{
+  @include follow_remove();
+  margin-bottom: 20px;
+}
+
+.userindex__wrap--follow_btn-do{
+  @include follow();
+  margin-bottom: 20px;
+}
+
+.userindex__wrap--follow_wrap{
+  display: flex;
+}
+
+.userindex__wrap_count{
+  margin: 0 10px;
+  color: rgb(71, 71, 71);
+  &:hover{
+    opacity: 0.8;
+  }
+}
+
+.userindex__wrap--follow_wrap_count-int{
+  font-weight: bold;
+}
+
+
 .no-image{
   width: 250px;
   height: 250px;
@@ -485,7 +512,7 @@
 
 
 
-// マイページ/show@user
+// ユーザーページ/show@user
 .usershow_wrap{
   .heading{
     margin: 90px 30px 0;
@@ -493,15 +520,38 @@
   .usershow{
     display: flex;
     &--image{
-      width:30%;
+      width:40%;
       height: 50px;
       margin-left: 20px;
       img{
         border-radius: 50%;
       }
     }
-    &__conatiner{
+    &__container{
       margin-left: 80px;
+      &--follow{
+        &_btn-remove{
+          @include follow_remove();
+          margin-bottom: 20px;
+        }
+        &_btn-do{
+          @include follow();
+          margin-bottom: 20px;
+        }
+      }
+      &--follow_wrap{
+        display: flex;
+        &_count{
+          margin: 0 10px;
+          color: rgb(71, 71, 71);
+          &:hover{
+            opacity: 0.8;
+          }
+          &-int{
+            font-weight: bold;
+          }
+        }
+      }
       &--edit_btn{
         @include submit();
         display: block;

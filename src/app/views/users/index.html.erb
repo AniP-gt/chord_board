@@ -12,6 +12,31 @@
             <%= attachment_image_tag user, :profile_image, fallback: "no-image.png" %>
           <%end%>
         </div>
+        <div class="userindex__wrap--follow">
+          <% if user.id != current_user %>
+            <% if current_user.following?(user)%>
+              <%= link_to user_relationships_path(user.id),method: :delete do%>
+                <button class="userindex__wrap--follow_btn-remove">フォローを外す</button>
+              <%end%>
+            <%else%>
+              <%= link_to user_relationships_path(user.id),method: :post do%>
+                <button class="userindex__wrap--follow_btn-do">フォローする</button>
+              <%end%>
+            <%end%>
+          <%end%>
+        </div>
+        <div class="userindex__wrap--follow_wrap">
+          <%=link_to follows_user_path(user) do%>
+            <div class="userindex__wrap--follow_wrap_count">
+              <p><span class="userindex__wrap--follow_wrap_count-int"><%= user.follows.count%></span>フォロー</p>
+            </div>
+          <%end%>
+          <%=link_to followers_user_path(user) do%>
+            <div class="userindex__wrap--follow_wrap_count">
+              <p><span class="userindex__wrap--follow_wrap_count-int"><%= user.followers.count%></span>フォロワー</p>
+            </div>
+          <%end%>
+        </div>
         <div class="userindex__wrap--name">
         ユーザー名:<%= link_to user.username, user_path(user) %>
         </div>
