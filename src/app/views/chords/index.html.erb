@@ -14,11 +14,6 @@
           <% end %>
         </div>
         <div class="chordindex__body">
-          <% if current_user.following?(user)%>
-            <%= link_to "フォローを外す", user_relationships_path(user.id),method: :delete%>
-          <%else%>
-            <%= link_to "フォローする", user_relationships_path(user.id),method: :post%>
-          <%end %>
           <div class="chordindex__body--title">
             <p>【タイトル】<br>
             <%= chord.title %></p>
@@ -39,7 +34,7 @@
           </div>
         </div>
       </div>
-        <%# 投稿コード %>
+        <%# 投稿作品 %>
         <div id="chords">
           <div class="chord_id" data-work="<%= chord.work%>"></div>
         </div>

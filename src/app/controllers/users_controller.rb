@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.all
+      @users = User.all
   end
 
   def show
@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     @users = user.followers
   end
+
 
   private
 

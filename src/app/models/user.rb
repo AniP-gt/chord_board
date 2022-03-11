@@ -14,18 +14,20 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :username
     validates :email
-    validates :password
-    validates :password_confirmation
+    # validates :password
+    # validates :password_confirmation
   end
 
 #　フォローする
 def follow(user_id)
   relationships.create(followed_id: user_id)
 end
+
 # フォローを解除
 def unfollow(user_id)
   relationships.find_by(followed_id: user_id).destroy
 end
+
 # フォローしているか判定
 def following?(user)
   follows.include?(user)
