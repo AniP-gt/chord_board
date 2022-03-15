@@ -14,6 +14,23 @@
           <% end %>
         </div>
         <div class="chordindex__body">
+
+        <div class= "chordindex__wrap--follow">
+            <% if signed_in? && chord.user.id != current_user.id %>
+              <% if current_user.following?(chord.user)%>
+                <%= link_to user_relationships_path(chord.user.id),method: :delete do%>
+                  <button class="chordindex__wrap--follow_btn-remove">フォロー中</button>
+                <%end%>
+              <%else%>
+                <%= link_to user_relationships_path(chord.user.id),method: :post do%>
+                  <button class="chordindex__wrap--follow_btn-do">フォローする</button>
+                <%end%>
+              <%end%>
+            <%else%>
+              <div class="chordindex__wrap--emptybox"></div>
+            <%end%>
+        </div>
+
           <div class="chordindex__body--title">
             <p>【タイトル】<br>
             <%= chord.title %></p>

@@ -12,3 +12,5 @@ Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
 //= require audiojs
+//= require jquery
+//= require jquery_ujs

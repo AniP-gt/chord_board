@@ -360,6 +360,14 @@
 
 
 
+.follow_btn-do{
+  @include follow();
+}
+
+.follow_btn-remove{
+  @include follow_remove();
+}
+
 // 投稿一覧画面/index@chord
 .chordindex{
   margin-top: 80px;
@@ -393,6 +401,18 @@
 .chordindex__body{
   margin-left: 30px;
   width:50%;
+}
+
+.chordindex__wrap--follow_btn-remove{
+  @include follow_remove();
+  width: 50%;
+  margin-bottom: 20px;
+}
+
+.chordindex__wrap--follow_btn-do{
+  @include follow();
+  width: 50%;
+  margin-bottom: 20px;
 }
 
 .chordindex__body--title{
@@ -664,3 +684,10 @@
   }
 }
 
+.follow_wrap{
+  margin: 90px 30px 0;
+}
+
+.follow{
+  width:25%;
+}

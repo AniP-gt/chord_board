@@ -1,22 +1,62 @@
-<% if @users.exists? %>
-  <% @users.each do |user| %>
-    <table>
-      <thead>
-        <tr>
-          <th>name</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= @user.name %></td>
-          <td>フォロー数: <%= @user.followings.count %></td>
-          <td>フォロワー数: <%= @user.followers.count %></td>
-        </tr>
-      </tbody>
-    </table>
+<section class="follow_wrap">
+
+  <div class="follow_head">
+      <div class="heading">
+        <div class="heading__h1">
+          <h1>フォロワー一覧</h1>
+        </div>
+      </div>
+    </div>
+
+  <% if @users.exists? %>
+    <section class="userindex__wrap">
+      <% @users.each do |user| %>
+        <div class="follow">
+          <div class="userindex__wrap--container">
+            <div class="no-image">
+              <%=link_to user_path(user) do%>
+                <%= attachment_image_tag user, :profile_image, fallback: "no-image.png" %>
+              <%end%>
+            </div>
+            <div class="userindex__wrap--follow">
+                <% if signed_in? && user.id != current_user.id %>
+                  <% if current_user.following?(user)%>
+                    <%= link_to user_relationships_path(user.id),method: :delete do%>
+                      <button class="userindex__wrap--follow_btn-remove">フォロー中</button>
+                    <%end%>
+                  <%else%>
+                    <%= link_to user_relationships_path(user.id),method: :post do%>
+                      <button class="userindex__wrap--follow_btn-do">フォローする</button>
+                    <%end%>
+                  <%end%>
+                <%else%>
+                  <div class="userindex__wrap--emptybox"></div>
+                <%end%>
+            </div>
+            <div class="userindex__wrap--follow_wrap">
+              <%=link_to following_user_path(user) do%>
+                <div class="userindex__wrap--follow_wrap_count">
+                  <p><span class="userindex__wrap--follow_wrap_count-int"><%= user.following.count%></span>フォロー</p>
+                </div>
+              <%end%>
+              <%=link_to followers_user_path(user) do%>
+                <div class="userindex__wrap--follow_wrap_count">
+                  <p><span class="userindex__wrap--follow_wrap_count-int"><%= user.followers.count%></span>フォロワー</p>
+                </div>
+              <%end%>
+            </div>
+            <div class="userindex__wrap--name">
+            ユーザー名:<%= link_to user.username, user_path(user) %>
+            </div>
+            <div class="count">
+              投稿数 :<%= user.chords.count%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </section>
+  <% else %>
+    <p>ユーザーはいません</p>
+
   <% end %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
+</section>

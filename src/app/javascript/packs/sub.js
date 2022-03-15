@@ -7,5 +7,3 @@ js_btn.addEventListener('click',()=>{
    menu.classList.toggle('open');
    btn_line.classList.toggle('open');
 });
-
-
