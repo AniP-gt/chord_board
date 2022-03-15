@@ -49,6 +49,11 @@
             <p>【コメント】
             <br><%= simple_format chord.body%></p>
           </div>
+          <% if chord.user.id == current_user.id %>
+            <div class="chordindex__body--delete">
+              <p><%= link_to "【投稿削除】",chord_path(chord) ,method: :delete, data: {confirm:"削除しますか？"} %></p>
+            </div>
+          <%end%>
         </div>
       </div>
         <%# 投稿作品 %>
@@ -63,7 +68,8 @@
 
 </section>
 
-  <!-- 音源再生用の要素 -->  <div id="ongen"></div>
+  <!-- 音源再生用の要素 -->
+  <div id="ongen"></div>
   <div id="audio_start"></div>
 
   <%= javascript_pack_tag 'index.js' %>

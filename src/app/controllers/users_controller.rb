@@ -37,6 +37,17 @@ class UsersController < ApplicationController
   end
 
   # def following
+  #   @user = User.find(params[:user_id])
+  #   @followings = @user.following.where.not(id: current_user.id)
+  # end
+
+  # def followers
+  #   @user = User.find(params[:user_id])
+  #   @followers = @user.follower.where.not(id: current_user.id)
+  # end
+
+
+  # def following
   #   @title = "フォロー"
   #   @user  = User.find(params[:id])
   #   @users = @user.following.paginate(page: params[:page])

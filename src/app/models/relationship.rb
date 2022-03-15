@@ -7,6 +7,5 @@ class Relationship < ApplicationRecord
   end
 
   def change
-
   end
 end
