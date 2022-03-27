@@ -14,10 +14,6 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :username
     validates :email
-    validates :password
-    validates :password_confirmation
-    validates :follower_id
-    validates :followed_id
   end
 
   # フォローする
