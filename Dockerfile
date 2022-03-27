@@ -9,7 +9,7 @@ COPY ./src /app
 RUN bundle config --local set path 'vendor/bundle' \
   && bundle install
 
-ENV RAILS_ENV=development
+ENV RAILS_ENV=production
 
   COPY start.sh /start.sh
   RUN chmod 744 /start.sh

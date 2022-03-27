@@ -26,6 +26,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id]).destroy
+    redirect_to root_path, notice: '退会しました。またのご利用お待ちしております。'
+  end
+
+
   def following
     user = User.find(params[:id])
     @users = user.following
@@ -35,31 +41,6 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     @users = user.followers
   end
-
-  # def following
-  #   @user = User.find(params[:user_id])
-  #   @followings = @user.following.where.not(id: current_user.id)
-  # end
-
-  # def followers
-  #   @user = User.find(params[:user_id])
-  #   @followers = @user.follower.where.not(id: current_user.id)
-  # end
-
-
-  # def following
-  #   @title = "フォロー"
-  #   @user  = User.find(params[:id])
-  #   @users = @user.following.paginate(page: params[:page])
-  #   render 'show_follow'
-  # end
-
-  # def followers
-  #   @title = "フォロワー"
-  #   @user  = User.find(params[:id])
-  #   @users = @user.followers.paginate(page: params[:page])
-  #   render 'show_follow'
-  # end
 
 
 

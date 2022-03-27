@@ -49,7 +49,7 @@
             <p>【コメント】
             <br><%= simple_format chord.body%></p>
           </div>
-          <% if chord.user.id == current_user.id %>
+          <% if signed_in? && chord.user.id == current_user.id %>
             <div class="chordindex__body--delete">
               <p><%= link_to "【投稿削除】",chord_path(chord) ,method: :delete, data: {confirm:"削除しますか？"} %></p>
             </div>
