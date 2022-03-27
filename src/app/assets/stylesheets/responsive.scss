@@ -240,16 +240,16 @@
     &--image{
       margin: 0 auto;
       margin-bottom: 250px;
-      width: 100%;
+      width: 80%;
     }
-    &__conatiner{
+    &__container{
       margin: 0 auto;
       &--show_profile{
         height: 200px;
       }
     }
   }
-  .chord{
+  .usershow_chord{
     margin: 0;
     #chords{
       .chord_id{
@@ -293,6 +293,8 @@
     }
   }
 }
+
+
 
 
 }
