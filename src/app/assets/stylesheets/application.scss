@@ -27,6 +27,20 @@
   @include message();
 }
 
+.feild_with_errors{
+
+}
+
+#error_explanation{
+  margin: 0 auto;
+  margin-top: 20px;
+  color: white;
+}
+
+.error_message{
+  font-weight: bold;
+}
+
 .new-alert{
   color: red;
 }
@@ -150,13 +164,6 @@
         @include submit();
       }
     }
-    #error_explanation{
-        ul{
-          li{
-            color: white;
-          }
-        }
-    }
   }
   a{
     color: white;
@@ -166,6 +173,7 @@
     }
   }
 }
+
 
 
 

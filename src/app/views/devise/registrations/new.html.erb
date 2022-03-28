@@ -1,13 +1,12 @@
 <div class="body-wrap">
   <div class="new-wrap">
     <h2><%= t('.sign_up') %></h2>
-
-    <div class="form">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-
+    <div class="form">
+    <div class="form-wrap">
         <div class="field">
-          <%= f.label :username ,'ユーザー名',class:"label"%><br />
+          <%= f.label :username ,'ユーザー名',class:"label"%><br/>
           <%= f.text_field :username, autofocus: true, autocomplete: "email", class:"input" %>
         </div>
 
@@ -19,8 +18,8 @@
         <div class="field">
           <%= f.label :password ,class:"label"%>
           <% if @minimum_password_length %>
-          <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-          <% end %><br />
+          <%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %>
+          <% end %><br/>
           <%= f.password_field :password, autocomplete: "new-password" , class:"input"%>
         </div>
 
@@ -33,7 +32,7 @@
           <%= f.submit t('.sign_up'), class:"submit" %>
         </div>
       <% end %>
-
+    </div>
     </div>
     <%= render "devise/shared/links"%>
   </div>
