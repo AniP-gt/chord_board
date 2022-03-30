@@ -65,3 +65,4 @@ gem "refile-mini_magick"
 gem 'audiojs-rails'
 gem 'rails-i18n'
 gem 'jquery-rails'
+gem 'dotenv-rails'
