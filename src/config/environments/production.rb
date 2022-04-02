@@ -62,9 +62,15 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "app_production"
 
+  # Ignore bad email addresses and do not raise email delivery errors.
+
+
+  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # メール認証
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'https://chord-board.herokuapp.com'}
+  host = 'https://chord-board.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -75,12 +81,6 @@ Rails.application.configure do
     domain:         host,
     authentication: :plain
   }
-
-  # Ignore bad email addresses and do not raise email delivery errors.
-
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = true
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true

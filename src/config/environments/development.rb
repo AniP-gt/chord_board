@@ -37,8 +37,20 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
     # 開発環境でメールを送るためのホストの設定（Railsチュートリアル11章）
-    host = 'localhost:3000'
-    config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+    # host = 'localhost:3000'
+    # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+
+  # 開発用のデモメール
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:         "smtp.gmail.com",
+    domain:          'gmail.com',
+    port:            587,
+    user_name:       Rails.application.credentials.gmail[:user_name],
+    password:        Rails.application.credentials.gmail[:password],
+    authentication: :plain
+  }
 
   config.action_mailer.perform_caching = false
 
@@ -78,20 +90,7 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-
   # herokuにてBlocked host: chord-board.herokuapp.comエラー対処
   config.hosts << "chord-board.herokuapp.com"
-
-  # 開発用のデモメール
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:         "smtp.gmail.com",
-    domain:          'gmail.com',
-    port:            587,
-    user_name:       Rails.application.credentials.gmail[:user_name],
-    password:        Rails.application.credentials.gmail[:password],
-    authentication: :plain
-  }
 
 end
