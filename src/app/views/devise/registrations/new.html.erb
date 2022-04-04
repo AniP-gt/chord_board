@@ -1,11 +1,9 @@
 <div class="body-wrap">
   <div class="new-wrap">
     <h2><%= t('.sign_up') %></h2>
-
     <div class="form">
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-
         <div class="field">
           <%= f.label :username ,'ユーザー名',class:"label"%><br />
           <%= f.text_field :username, autofocus: true, autocomplete: "email", class:"input" %>
