@@ -29,7 +29,7 @@ Devise.setup do |config|
 
   config.mailer = 'Users::Mailer'
 
-  config.mailer_sender = '認証メール<@gmail.com>'
+  config.mailer_sender = '認証メール<chord-board@gmail.com>'
 
 
   # Configure the class responsible to send e-mails.
