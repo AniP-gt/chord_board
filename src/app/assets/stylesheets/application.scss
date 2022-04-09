@@ -488,7 +488,7 @@
 .userindex__wrap{
   display: flex;
   flex-wrap: wrap;
-  margin-right: 20px;
+  // margin-right: 20px;
   margin-left: 20px;
 }
 
@@ -565,8 +565,8 @@
 .followindex__wrap{
   display: flex;
   flex-wrap: wrap;
-  margin-right: 20px;
-  margin-left: 10px;
+  // margin-right: 20px;
+  // margin-left: 10px;
 }
 
 .followindex__wrap--container{
@@ -618,7 +618,11 @@
   font-size: 20px;
 }
 
+// フォロー/フォロワー
+.follow_wrap{
+  margin: 90px 25px 0 ;
 
+}
 
 
 // ユーザーページ/show@user
@@ -768,6 +772,3 @@
   }
 }
 
-.follow_wrap{
-  margin: 90px 30px 0;
-}
