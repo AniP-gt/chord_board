@@ -11,19 +11,19 @@ User.create!( username:  "テストユーザー",
               email: "test@example.com",
               password:              123456,
               password_confirmation: 123456,
-              confirmed_at: "2022-04-06 09:47:01"
+              confirmed_at: Time.zone.now
               )
 
 # 追加のユーザーをまとめて生成する
 99.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
-  password = "password"
+  email = "test-#{n+1}@example.com"
+  password = 123456
   User.create!( username:  name,
                 email: email,
-                password:              123456,
-                password_confirmation: 123456,
-                confirmed_at: "2022-04-06 09:47:01"
+                password:              password,
+                password_confirmation: password,
+                confirmed_at: Time.zone.now
                 )
 end
 
@@ -64,4 +64,13 @@ user1.chords.create(title: title3, work: work3, body: body3)
 user2.chords.create(title: title4, work: work4, body: body4)
 user3.chords.create(title: title5, work: work5, body: body5)
 user2.chords.create(title: title6, work: work6, body: body6)
+
+
+# リレーションシップ
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
 

@@ -1,7 +1,7 @@
 class ChordsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   def index
-    @chords = Chord.all.order(created_at: :desc)
+    @chords = Chord.all.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new

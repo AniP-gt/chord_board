@@ -44,6 +44,11 @@
         <%= f.submit "更　新", class:"submit"%>
       </div>
     </section>
+      <% if @user.id == current_user.id %>
+        <div class="usershow_chord__container--delete">
+          <p><%= link_to "【退会はこちら】",user_path(@user) ,method: :delete, data: {confirm:"退会しますか？"} %></p>
+        </div>
+      <%end%>
     <% end %>
   </div>
 </section>
