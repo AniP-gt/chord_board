@@ -19,7 +19,7 @@
     <div class="usershow__container">
       <% if @user.id == current_user.id %>
         <div class="usershow__container--edit">
-          <p><%=link_to"編集", edit_user_path(@user), class:"usershow__container--edit_btn" %></p>
+          <p><%=link_to"編集", edit_user_path(@user),id: "edit_btn", class:"usershow__container--edit_btn" %></p>
         </div>
       <%else%>
         <div class="usershow__container--follow">
@@ -60,11 +60,6 @@
         <span class="usershow__container--show_profile_box-title">プロフィール</span>
         <%= @user.profile%>
       </div>
-      <% if @user.id == current_user.id %>
-        <div class="usershow_chord__container--delete">
-          <p><%= link_to "【退会する】",user_path(@user) ,method: :delete, data: {confirm:"退会しますか？"} %></p>
-        </div>
-      <%end%>
     </div>
   </section>
 
@@ -114,6 +109,8 @@
   <div id="audio_start"></div>
 
 </section>
+
+
 
   <%= javascript_pack_tag 'index.js' %>
   <%= javascript_pack_tag 'sound.js' %>

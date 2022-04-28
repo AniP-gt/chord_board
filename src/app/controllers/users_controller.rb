@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(20)
   end
 
   def show
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user), notice: '更新に成功しました'
+      redirect_to user_path(@user), notice: '更新しました'
     else
       render :edit
     end
@@ -33,12 +33,12 @@ class UsersController < ApplicationController
 
   def following
     user = User.find(params[:id])
-    @users = user.following
+    @users = user.following.page(params[:page]).per(20)
   end
 
   def followers
     user = User.find(params[:id])
-    @users = user.followers
+    @users = user.followers.page(params[:page]).per(20)
   end
 
 

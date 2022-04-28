@@ -34,6 +34,24 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+# Gem/Capybara
+Capybara.register_driver :remote_chrome do |app|
+  url = "http://chrome:4444/wd/hub"
+  capabilities = ::Selenium::WebDriver::Remote::Capabilities.chrome(
+    "goog:chromeOptions" => {
+      "args" => [
+        "no-sandbox",
+        "headless",
+        "disable-gpu",
+        "window-size=1680,1050"
+      ]
+    }
+  )
+  Capybara::Selenium::Driver.new(app, browser: :remote, url: url, capabilities: capabilities)
+end
+
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -41,7 +59,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
@@ -66,8 +84,41 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  # FactoryBot/Gem
   config.include FactoryBot::Syntax::Methods
-  config.include Devise::Test::ControllerHelpers, type: :controller
+
+  # Dvise/Gem
+  config.include Devise::Test::ControllerHelpers, type:
+  :controller
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :system
+
   config.extend ControllerMacros, :type => :controller
+
+
+  # Capybara/Gem
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :remote_chrome
+    Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
+    Capybara.server_port = 4444
+    Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+  end
+
+  # DatabaseRewinder/Gem
+  config.before(:suite) do
+    DatabaseRewinder.clean_all
+    # or
+    # DatabaseRewinder.clean_with :any_arg_that_would_be_actually_ignored_anyway
+  end
+  config.after(:each) do
+    DatabaseRewinder.clean
+  end
+
 end
+
+
+

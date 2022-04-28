@@ -16,19 +16,19 @@
         <div class="chordindex__body">
 
         <div class= "chordindex__wrap--follow">
-            <% if signed_in? && chord.user.id != current_user.id %>
-              <% if current_user.following?(chord.user)%>
-                <%= link_to user_relationships_path(chord.user.id),method: :delete do%>
-                  <button class="chordindex__wrap--follow_btn-remove">フォロー中</button>
-                <%end%>
-              <%else%>
-                <%= link_to user_relationships_path(chord.user.id),method: :post do%>
-                  <button class="chordindex__wrap--follow_btn-do">フォローする</button>
-                <%end%>
+          <% if signed_in? && chord.user.id != current_user.id %>
+            <% if current_user.following?(chord.user)%>
+              <%= link_to user_relationships_path(chord.user.id),method: :delete do%>
+                <button id="follow_now" class="chordindex__wrap--follow_btn-remove">フォロー中</button>
               <%end%>
             <%else%>
-              <div class="chordindex__wrap--emptybox"></div>
+              <%= link_to user_relationships_path(chord.user.id),method: :post do%>
+                <button id="follow_do" class="chordindex__wrap--follow_btn-do">フォローする</button>
+              <%end%>
             <%end%>
+          <%else%>
+            <div class="chordindex__wrap--emptybox"></div>
+          <%end%>
         </div>
 
           <div class="chordindex__body--title">
@@ -51,7 +51,7 @@
           </div>
           <% if signed_in? && chord.user.id == current_user.id %>
             <div class="chordindex__body--delete">
-              <p><%= link_to "【投稿削除】",chord_path(chord) ,method: :delete, data: {confirm:"削除しますか？"} %></p>
+              <p><%= link_to "【投稿削除】",chord_path(chord) ,method: :delete,id: "delete_btn", data: {confirm:"削除しますか？"} %></p>
             </div>
           <%end%>
         </div>
@@ -67,6 +67,10 @@
   <%end%>
 
 </section>
+
+  <div class="page">
+    <%= paginate @chords %>
+  </div>
 
   <!-- 音源再生用の要素 -->
   <div id="ongen"></div>

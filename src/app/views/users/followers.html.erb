@@ -21,7 +21,7 @@
             <div class="followindex__wrap--follow">
                 <% if signed_in? && user.id != current_user.id %>
                   <% if current_user.following?(user)%>
-                    <%= link_to user_relationships_path(user.id),method: :delete do%>
+                    <%= link_to user_relationships_path(user.id),method: :delete do %>
                       <button class="followindex__wrap--follow_btn-remove">フォロー中</button>
                     <%end%>
                   <%else%>
@@ -55,6 +55,9 @@
         </div>
       <% end %>
     </section>
+    <div class="page">
+      <%= paginate @users %>
+    </div>
   <% else %>
     <p>ユーザーはいません</p>
 

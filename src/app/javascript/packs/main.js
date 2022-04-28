@@ -135,9 +135,9 @@ window.add = function (a){
     chord_list+="<div id="+str+" class='chords'><p class='sakuhin'><img src='/assets/"+str+".png' class='chord_img' alt="+str+"></p><p class='remove' onClick=\"sakuzyo("+i+")\">×削除</p></div>";
     form_hidden+= str+",";
 
-  sakuhin.innerHTML = chord_list;
-  let form='<input type="hidden" value="'+form_hidden+'" name="chord[work]" id="chord_work">';
-	document.getElementById('form').innerHTML = form;
+    sakuhin.innerHTML = chord_list;
+    let form='<input type="hidden" value="'+form_hidden+'" name="chord[work]" id="chord_work">';
+	  document.getElementById('form').innerHTML = form;
   };
 };
 
