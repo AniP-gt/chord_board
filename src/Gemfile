@@ -53,7 +53,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-
+  gem 'database_rewinder'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -69,3 +69,4 @@ gem 'jquery-rails'
 gem 'dotenv-rails'
 gem 'kaminari'
 gem 'bootstrap'
+gem 'pry-rails'

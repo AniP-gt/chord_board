@@ -66,11 +66,14 @@ user3.chords.create(title: title5, work: work5, body: body5)
 user2.chords.create(title: title6, work: work6, body: body6)
 
 
-# リレーションシップ
+# # リレーションシップ
 users = User.all
 user  = users.first
 following = users[2..50]
 followers = users[3..40]
-following.each { |followed| user.follow(followed) }
-followers.each { |follower| follower.follow(user) }
-
+following.each do |followed|
+  user.follow(followed)
+end
+followers.each do |follower|
+  follower.follow(user)
+end

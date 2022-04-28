@@ -7,6 +7,13 @@ Rails.application.routes.draw do
     end
     resource :relationships, only: [:create, :destroy]
   end
-  
-  resources :chords
+
+  # resources :users do
+  #   member do
+  #     get :following, :followers
+  #   end
+  # end
+  # resources :relationships, only: [:create, :destroy]
+
+  resources :chords, only: [:index, :new, :create, :destroy]
 end

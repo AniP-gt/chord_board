@@ -1,5 +1,6 @@
 class ChordsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+
   def index
     @chords = Chord.all.order(created_at: :desc).page(params[:page]).per(10)
   end
@@ -22,8 +23,9 @@ class ChordsController < ApplicationController
   def destroy
     chord = Chord.find(params[:id])
     chord.destroy
-    redirect_to user_path(chord.user)
+    redirect_to request.referer || root_url, notice: '削除しました'
   end
+
 
   private
 

@@ -19,7 +19,7 @@
     <div class="usershow__container">
       <% if @user.id == current_user.id %>
         <div class="usershow__container--edit">
-          <p><%=link_to"編集", edit_user_path(@user), class:"usershow__container--edit_btn" %></p>
+          <p><%=link_to"編集", edit_user_path(@user),id: "edit_btn", class:"usershow__container--edit_btn" %></p>
         </div>
       <%else%>
         <div class="usershow__container--follow">

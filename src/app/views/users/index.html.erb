@@ -16,12 +16,12 @@
         <div class="userindex__wrap--follow">
             <% if signed_in? && user.id != current_user.id %>
               <% if current_user.following?(user)%>
-                <%= link_to user_relationships_path(user.id),method: :delete do%>
-                  <button class="userindex__wrap--follow_btn-remove">フォロー中</button>
+                <%= link_to user_relationships_path(user.id),method: :delete do %>
+                  <button id="follow_now" class="userindex__wrap--follow_btn-remove">フォロー中</button>
                 <%end%>
               <%else%>
-                <%= link_to user_relationships_path(user.id),method: :post do%>
-                  <button class="userindex__wrap--follow_btn-do">フォローする</button>
+                <%= link_to user_relationships_path(user.id),method: :post do %>
+                  <button id="follow_do" class="userindex__wrap--follow_btn-do">フォローする</button>
                 <%end%>
               <%end%>
             <%else%>

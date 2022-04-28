@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable
   attachment :profile_image
+  
   has_many :chords, dependent: :destroy
 
   has_many :relationships, class_name: "Relationship",foreign_key: "follower_id",dependent: :destroy
@@ -10,12 +11,9 @@ class User < ApplicationRecord
   has_many :reverse_of_relationships, class_name: "Relationship",foreign_key: "followed_id",dependent: :destroy
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
-
   with_options presence: true do
-    validates :username
-    validates :email
-    validates :password
-    validates :password_confirmation
+    validates :username, length: { maximum: 50 }
+    validates :email, length: { maximum: 255 }
   end
 
   # フォローする

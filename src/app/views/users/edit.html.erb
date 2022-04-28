@@ -36,12 +36,12 @@
       </div>
 
       <div class="field">
-        <%= f.label :profile_image,"プロフィール画像",class:"label"%><br>
+        <%= f.label :profile_image,"プロフィール画像",id: "profile_image",class:"label"%><br>
         <%= f.attachment_field :profile_image%>
       </div>
 
       <div class="actions">
-        <%= f.submit "更　新", class:"submit"%>
+        <%= f.submit "更　新", id: "edit_submit",class:"submit"%>
       </div>
     </section>
       <% if @user.id == current_user.id %>
