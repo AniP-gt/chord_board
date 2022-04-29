@@ -203,13 +203,19 @@
 // index@home画面
 .home{
   .home-wrap{
+    .home-index{
+      color:white;
+      p{
+        margin-top:10px;
+      }
+    }
     .home-container{
       margin: 0 auto;
       background-color: beige;
       border-radius: 20px;
       width: 250px;
       height: 70px;
-      margin-top: 45px;
+      margin-top: 35px;
       .home-a{
         text-align: center;
         font-size: 30px;
