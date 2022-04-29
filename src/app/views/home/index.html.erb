@@ -4,6 +4,10 @@
       <div class="home-wrap">
 
         <% if user_signed_in? %>
+        <div class="home-index">
+          <h2>コード進行を共有するサイト、ChordBoardへようこそ！</h2>
+            <p>早速、作品を投稿しましょう！</p>
+        </div>
           <div class="home-container">
             <%= link_to "作品投稿", new_chord_path,class:"home-a" %>
           </div>
@@ -17,6 +21,12 @@
             <%= link_to "マイページ", user_path(current_user),class:"home-a" %>
           </div>
         <% else %>
+        <div class="home-index">
+          <h2>コード進行を共有するサイト、ChordBoardへようこそ！</h2>
+          <p>ここでは様々なユーザーがコード進行を自由に作成し、オリジナルコード進行を共有するサイトです<br>
+          アカウント登録をして、早速作品を投稿しましょう！
+          </p>
+        </div>
           <div class="home-container">
             <%= link_to "アカウント登録", new_user_registration_path,class:"home-a" %>
           </div>
