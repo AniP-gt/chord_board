@@ -91,11 +91,11 @@ function setCookie(name, value, days) {
   document.cookie = name + "=" + value + expires ;
 };
 
+
 // クッキーを取得する関数
 function getCookie( name ){
   // 取得したクッキーを「;」区切りで分割し、配列を「変数cookies」に格納
   let cookies = document.cookie.split(';');
-
   // クッキーの数だけループ
   for( let i=0; i < cookies.length; i++ ){
      // 変数cookiesを「=」区切りでさらに分割し、配列を「変数cookie」に格納
@@ -137,7 +137,7 @@ window.add = function (a){
 
     sakuhin.innerHTML = chord_list;
     let form='<input type="hidden" value="'+form_hidden+'" name="chord[work]" id="chord_work">';
-	  document.getElementById('form').innerHTML = form;
+    document.getElementById('form').innerHTML = form;
   };
 };
 
