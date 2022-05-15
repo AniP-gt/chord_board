@@ -1,18 +1,32 @@
 # ChordBoard
+URL:https://chord-board.herokuapp.com/
+
 
 作曲する際に、コード進行のアイデアを共有する掲示板形式のサイトです。
+
+
 ログイン機能があるので、自分専用のメモ帳としても使えます。
+
+
 また、再生ボタンをクリックすると音楽が再生するので、コーﾄﾞ進行をWEB上で確認できます。
-(テストユーザーでのログインは、email: test@example.com、password: 123456)
+
+
+(テストユーザーでのログインは、
+
+
+email: test@example.com
+
+
+password: 123456)
+
 
 ## 開発環境
 * Windows11
-* WSL2(ubuntu)
+* WSL2(ubuntu20.04.3)
+* Git
+* GitHub
 
 ## 使用技術
-* HTML5
-* SCSS
-* bootstrap 5.1.3
 * Ruby 2.7.5
 * Ruby on Rails 6.1.4.6
 * MySQL 8.0
