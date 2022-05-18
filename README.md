@@ -23,8 +23,6 @@ URL:https://chord-board.herokuapp.com/
 * WSL2(ubuntu20.04.3)
 * Git
 * GitHub
-
-
 ## 使用技術
 * HTML5
 * SASS
