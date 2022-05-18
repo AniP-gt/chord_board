@@ -11,13 +11,11 @@ URL:https://chord-board.herokuapp.com/
 また、再生ボタンをクリックすると音楽が再生するので、コーﾄﾞ進行をWEB上で確認できます。
 
 
-(テストユーザーでのログインは、
+ (テストユーザーでのログインは、
 
+ email: test@example.com
 
-email: test@example.com
-
-
-password: 123456)
+ password: 123456)
 
 
 ## 開発環境
@@ -25,6 +23,7 @@ password: 123456)
 * WSL2(ubuntu20.04.3)
 * Git
 * GitHub
+
 
 ## 使用技術
 * HTML5
