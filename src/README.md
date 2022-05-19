@@ -10,15 +10,15 @@ URL:https://chordboard.net/
 
 また、再生ボタンをクリックすると音楽が再生するので、コーﾄﾞ進行をWEB上で確認できます。
 
-
-(テストユーザーでのログインは、
-
-
-email: test@example.com
+---
+**(テストユーザーでのログインは、**
 
 
-password: 123456)
+* **email: test@example.com**
 
+
+* **password: 123456)**
+---
 
 ## インフラ構成図
 ![](./src/infrastructure.drawio.svg)
