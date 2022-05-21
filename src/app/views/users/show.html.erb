@@ -24,16 +24,7 @@
       <%else%>
         <div class="usershow__container--follow">
           <div id="user_follow_form">
-            <%= render 'users/show_follow/follow_form' %>
-            <%# <% if current_user.following?(@user)%> %>
-              <%# <%= link_to user_relationships_path(@user.id),method: :delete do %> %>
-                <%# <button class="usershow__container--follow_btn-remove">フォロー中</button> %>
-              <%# <%end %> %>
-            <%# <%else%> %>
-              <%# <%= link_to user_relationships_path(@user.id),method: :post do %> %>
-                <%# <button class="usershow__container--follow_btn-do">フォローする</button> %>
-              <%# <%end %> %>
-            <%# <%end %> %>
+            <%= render 'users/show_follow/follow_form' ,user: @user%>
           </div>
         </div>
       <%end%>
@@ -43,11 +34,13 @@
             <p><span class="usershow__container--follow_wrap_count-int"><%= @user.following.count%></span>フォロー</p>
           </div>
         <%end%>
-        <%=link_to followers_user_path(@user) do%>
-          <div class="usershow__container--follow_wrap_count">
-            <p><span class="usershow__container--follow_wrap_count-int"><%= @user.followers.count%></span>フォロワー</p>
-          </div>
-        <%end%>
+        <div id="followers_count">
+          <%=link_to followers_user_path(@user) do%>
+            <div class="usershow__container--follow_wrap_count">
+              <p ><span class="usershow__container--follow_wrap_count-int"><%= @user.followers.count%></span>フォロワー</p>
+            </div>
+          <%end%>
+        </div>
       </div>
       <div class="usershow__container--show_edit">
         <p>ユーザー名：<%= @user.username%></p>
