@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :favorite do
-    user_id { 1 }
-    chord_id { 1 }
+  factory :favorite, class:Favorite do
+    user_id { FactoryBot.create(:user).id }
+    chord_id { FactoryBot.create(:user).id }
   end
 end
