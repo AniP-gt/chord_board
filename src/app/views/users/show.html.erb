@@ -47,6 +47,11 @@
             <p><span class="usershow__container--follow_wrap_count-int"><%= @user.followers.count%></span>フォロワー</p>
           </div>
         <%end%>
+        <%= link_to favorites_user_path(@user) do%>
+          <div class="usershow__container--follow_wrap_count">
+            <p><span class="usershow__container--follow_wrap_count-int"><%= @user.favorites.count%></span>いいね</p>
+          </div>
+        <%end%>
       </div>
       <div class="usershow__container--show_edit">
         <p>ユーザー名：<%= @user.username%></p>

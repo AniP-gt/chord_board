@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers,:favorites
     end
     resources :relationships, only: [:create, :destroy]
   end
