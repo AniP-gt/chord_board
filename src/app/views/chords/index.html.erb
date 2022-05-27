@@ -62,14 +62,15 @@
         </div>
         <%# 再生ボタン %>
         <div class="play_id"></div>
+        <%# いいね機能 %>
         <div class="favorite">
           <% if chord.favorited_by?(current_user)%>
-            <%= link_to chord_favorites_path(chord),method: :delete, class: "favorite_btn" do%>
-              <p>❤<%= chord.favorites.count%>いいね</p>
+            <p><%= link_to chord_favorites_path(chord.user.id),method: :delete, class: "favorite_btn" do%>
+              ♥<%= chord.favorites.count%>いいね</p>
             <%end%>
           <%else%>
-            <%link_to chord_favorites_path(chord), method: :post, class: "favorite_btn" do%>
-              <p>♡<%= chord.favorites.count%>いいね</p>
+            <p><%= link_to chord_favorites_path(chord.user.id), method: :post, class: "favorite_btn" do%>
+              ♡<%= chord.favorites.count%>いいね</p>
             <%end%>
           <%end%>
         </div>
