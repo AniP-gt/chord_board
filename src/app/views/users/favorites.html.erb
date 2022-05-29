@@ -66,11 +66,11 @@
         <%# いいね機能 %>
         <div id="favorite_id" class="favorite">
           <% if chord.favorited_by?(current_user)%>
-            <%= link_to chord_favorites_path(chord.user.id),method: :delete, class: "favorite_btn" do%>
+            <%= link_to chord_favorites_path(chord.id),method: :delete, class: "favorite_btn" do%>
               <p id="favorite_delete">♥<%= chord.favorites.count%>いいね</p>
             <%end%>
           <%else%>
-            <%= link_to chord_favorites_path(chord.user.id), method: :post, class: "favorite_btn" do%>
+            <%= link_to chord_favorites_path(chord.id), method: :post, class: "favorite_btn" do%>
               <p id="favorite_post">♡<%= chord.favorites.count%>いいね</p>
             <%end%>
           <%end%>
