@@ -48,6 +48,7 @@ URL:https://chordboard.net/
   * cookieを使った文字列取得・画面上に取得した文字列の表示・削除（cookieの振り直し）(Javascript)
   * 音声再生機能(audio-rails)
 * フォロー機能
+* いいね機能
 * ページネーション機能(kaminari)(bootstrap)
 * レスポンシブ対応(SASS)
 
