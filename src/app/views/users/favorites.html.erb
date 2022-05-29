@@ -1,0 +1,80 @@
+<section class="usershow_wrap">
+
+  <section class="heading">
+      <div class="heading__h1">
+        <h1>いいねした投稿一覧</h1>
+      </div>
+  </section>
+
+  <% @favorite_chord.each do |chord|%>
+    <section class="chordindex__wrap">
+      <div class="chordindex__wrap--container">
+        <div class="chordindex__wrap--img">
+          <%=link_to user_path(chord.user.id) do%>
+            <%= attachment_image_tag chord.user, :profile_image, fallback: "no-image.png"%>
+          <% end %>
+        </div>
+        <div class="chordindex__body">
+
+          <div class= "chordindex__wrap--follow">
+            <% if signed_in? && chord.user.id != current_user.id %>
+              <% if current_user.following?(chord.user)%>
+                <%= link_to user_relationships_path(chord.user.id),method: :delete do%>
+                  <button id="follow_now" class="chordindex__wrap--follow_btn-remove">フォロー中</button>
+                <%end%>
+              <%else%>
+                <%= link_to user_relationships_path(chord.user.id),method: :post do%>
+                  <button id="follow_do" class="chordindex__wrap--follow_btn-do">フォローする</button>
+                <%end%>
+              <%end%>
+            <%else%>
+              <div class="chordindex__wrap--emptybox"></div>
+            <%end%>
+          </div>
+
+          <div class="chordindex__body--title">
+            <p>【タイトル】<br>
+            <%= chord.title %></p>
+          </div>
+          <div class="chordindex__body--username">
+            <%=link_to user_path(chord.user.id) do%>
+              <p>【作曲者】
+              <br><%= chord.user.username%></p>
+            <%end%>
+          </div>
+          <div class="chordindex__body--updated">
+            <p>【投稿時間】
+            <br><%= chord.updated_at.strftime("%Y-%m-%d %H:%M")%></p>
+          </div>
+          <div class="chordindex__body--body">
+            <p>【コメント】
+            <br><%= simple_format chord.body%></p>
+          </div>
+          <% if signed_in? && chord.user.id == current_user.id %>
+            <div class="chordindex__body--delete">
+              <p><%= link_to "【投稿削除】",chord_path(chord) ,method: :delete,id: "delete_btn", data: {confirm:"削除しますか？"} %></p>
+            </div>
+          <%end%>
+        </div>
+      </div>
+        <%# 投稿作品 %>
+        <div id="chords">
+          <div class="chord_id" data-work="<%= chord.work%>"></div>
+        </div>
+        <%# 再生ボタン %>
+        <div class="play_id"></div>
+        <%# いいね機能 %>
+        <div id="favorite_id" class="favorite">
+          <% if chord.favorited_by?(current_user)%>
+            <%= link_to chord_favorites_path(chord.user.id),method: :delete, class: "favorite_btn" do%>
+              <p id="favorite_delete">♥<%= chord.favorites.count%>いいね</p>
+            <%end%>
+          <%else%>
+            <%= link_to chord_favorites_path(chord.user.id), method: :post, class: "favorite_btn" do%>
+              <p id="favorite_post">♡<%= chord.favorites.count%>いいね</p>
+            <%end%>
+          <%end%>
+        </div>
+      </div>
+    </section>
+  <%end%>

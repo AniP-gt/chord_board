@@ -3,17 +3,12 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers, :favorites
     end
     resource :relationships, only: [:create, :destroy]
   end
 
-  # resources :users do
-  #   member do
-  #     get :following, :followers
-  #   end
-  # end
-  # resources :relationships, only: [:create, :destroy]
-
-  resources :chords, only: [:index, :new, :create, :destroy]
+  resources :chords, only: [:index, :new, :create, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+  end
 end

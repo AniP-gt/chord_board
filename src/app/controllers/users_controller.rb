@@ -41,7 +41,11 @@ class UsersController < ApplicationController
     @users = user.followers.page(params[:page]).per(20)
   end
 
-
+  def favorites
+    user = User.find(params[:id])
+    favorite = Favorite.where(user_id: user.id).pluck(:chord_id)
+    @favorite_chord = Chord.find(favorite)
+  end
 
   private
 

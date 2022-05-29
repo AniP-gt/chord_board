@@ -3,8 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :confirmable
   attachment :profile_image
-  
+
   has_many :chords, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_many :relationships, class_name: "Relationship",foreign_key: "follower_id",dependent: :destroy
   has_many :following, through: :relationships, source: :followed

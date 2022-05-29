@@ -129,4 +129,17 @@ RSpec.describe "UsersController", type: :request do
     end
   end
 
+  describe "#user/favorite" do
+    before do
+      sign_in user
+    end
+    it "正常なレスポンスか？" do
+      get favorites_user_path user.id
+      expect(response).to be_truthy
+    end
+    it "200レスポンスが返ってきているか？" do
+      get favorites_user_path user.id
+      expect(response).to have_http_status "200"
+    end
+  end
 end

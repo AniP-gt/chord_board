@@ -47,6 +47,11 @@
             <p><span class="usershow__container--follow_wrap_count-int"><%= @user.followers.count%></span>フォロワー</p>
           </div>
         <%end%>
+        <%= link_to favorites_user_path(@user) do%>
+          <div class="usershow__container--follow_wrap_count">
+            <p><span class="usershow__container--follow_wrap_count-int"><%= @user.favorites.count%></span>いいね</p>
+          </div>
+        <%end%>
       </div>
       <div class="usershow__container--show_edit">
         <p>ユーザー名：<%= @user.username%></p>
@@ -100,6 +105,18 @@
         </div>
         <%# 再生ボタン %>
         <div class="play_id"></div>
+        <%# いいね機能 %>
+        <div id="favorite_id" class="favorite">
+          <% if chord.favorited_by?(current_user)%>
+            <%= link_to chord_favorites_path(chord.id),method: :delete, class: "favorite_btn" do%>
+              <p id="favorite_delete">♥<%= chord.favorites.count%>いいね</p>
+            <%end%>
+          <%else%>
+            <%= link_to chord_favorites_path(chord.id), method: :post, class: "favorite_btn" do%>
+              <p id="favorite_post">♡<%= chord.favorites.count%>いいね</p>
+            <%end%>
+          <%end%>
+        </div>
       </section>
     <%end%>
   </section>
