@@ -1,5 +1,5 @@
 # ChordBoard
-URL:https://chordboard.net/
+URL:https://chord-board.herokuapp.com/
 
 
 作曲する際に、コード進行のアイデアを共有する掲示板形式のサイトです。
@@ -38,7 +38,7 @@ URL:https://chordboard.net/
 * Rspec 5.0.3
 * AWS
   * ECR/ECS/RDS/ALB/Route53
-
+* Heroku（現在はこちらのみ）
 
 ## 機能一覧
 * ユーザー機能、ログイン機能(devise)

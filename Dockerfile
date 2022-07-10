@@ -12,6 +12,6 @@ RUN bundle config --local set path 'vendor/bundle' \
 
 ENV RAILS_ENV=production
 
-  COPY start.sh /start.sh
-  RUN chmod 744 /start.sh
-  CMD ["sh", "/start.sh"]
+  # COPY start.sh /start.sh
+  # RUN chmod 744 /start.sh
+  # CMD ["sh", "/start.sh"]
