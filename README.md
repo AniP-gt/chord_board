@@ -1,7 +1,6 @@
+# 現在は公開しておりません
+
 # ChordBoard
-URL:https://chord-board.herokuapp.com/
-
-
 作曲する際に、コード進行のアイデアを共有する掲示板形式のサイトです。
 
 
